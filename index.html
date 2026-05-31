@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Gran Espíritu — Medicina Fungi Natural</title>
+  <meta name="description" content="Catálogo de productos adaptogénicos y medicinales del mundo fungi. Reishi, Melena de León, Cordyceps y más. Envíos a todo Chile." />
+  <meta name="theme-color" content="#3d5a40" />
+
+  <!-- Favicon emoji 🍄 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍄</text></svg>" />
+
+  <!-- Open Graph / compartir en redes (al desplegar, reemplazar URLs por absolutas) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gran Espíritu — Medicina Fungi Natural" />
+  <meta property="og:description" content="Hongos medicinales y adaptógenos. Packs con descuento y envíos a todo Chile." />
+  <meta property="og:image" content="./fotos/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: DM Sans + Fraunces para editorial forestal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS — Bosque Profundo · Fungi
+       Inspirado en minimalist-ui.md
+    ═══════════════════════════════════════════ */
+    :root {
+      /* Color sistema — bosque húmedo */
+      --bg:           #f2ede6;   /* pergamino cálido */
+      --surface:      #ece6dc;   /* superficie lino */
+      --surface-alt:  #e0d9ce;   /* superficie más oscura */
+      --border:       #d4cbbf;   /* borde tierra */
+      --text:         #1e1a15;   /* marrón casi negro */
+      --text-muted:   #6b5e4e;   /* marrón medio */
+      --text-subtle:  #9e8e7c;   /* marrón suave */
+
+      /* Acento - musgo bosque */
+      --pop:          #3d5a40;   /* verde musgo profundo */
+      --pop-light:    #4a6d4e;   /* verde musgo claro */
+      --pop-dim:      #d4e2d5;   /* verde muy suave */
+
+      /* Fungi / tierra */
+      --fungi:        #7a4e2d;   /* marrón hongo */
+      --fungi-light:  #a0673d;   /* marrón hongo claro */
+      --fungi-dim:    #f0e8de;   /* crema fondo hongo */
+
+      /* Sombras planas (minimalist-ui) */
+      --shadow-sm:  0 1px 2px rgba(30,26,21,0.04);
+      --shadow-md:  0 2px 8px rgba(30,26,21,0.06), 0 1px 2px rgba(30,26,21,0.04);
+      --shadow-lg:  0 8px 24px rgba(30,26,21,0.08), 0 2px 4px rgba(30,26,21,0.04);
+
+      /* Radios (minimalist-ui) */
+      --r-sm:  6px;
+      --r-md:  10px;
+      --r-lg:  16px;
+      --r-xl:  24px;
+      --r-2xl: 32px;
+
+      /* Tipografía */
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-display: 'Fraunces', Georgia, serif;
+    }
+
+    /* ───── Reset ───── */
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: #2a2217; /* oscuro exterior (simula mesa) */
+      min-height: 100svh;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Scrollbar limpia */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+    /* ───── Wrapper móvil ───── */
+    #app {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100svh;
+      background: var(--bg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+    }
+
+    /* ═══════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════ */
+    #site-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px 12px;
+    }
+
+    /* Logo icon */
+    .logo-mark {
+      width: 40px; height: 40px;
+      border-radius: var(--r-md);
+      background: var(--pop);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .logo-text { flex: 1; line-height: 1.1; }
+    .logo-text-main {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo-text-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Cart icon btn */
+    #cart-toggle-btn {
+      position: relative;
+      width: 40px; height: 40px;
+      border-radius: var(--r-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 150ms ease;
+      flex-shrink: 0;
+    }
+    #cart-toggle-btn:hover { background: var(--surface-alt); }
+    #cart-toggle-btn svg { width: 20px; height: 20px; color: var(--text); }
+
+    #cart-badge {
+      position: absolute; top: -6px; right: -6px;
+      background: var(--fungi);
+      color: #fff;
+      font-size: 10px; font-weight: 700;
+      min-width: 18px; height: 18px;
+      padding: 0 4px;
+      border-radius: 99px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #cart-badge.hidden { display: none; }
+
+    /* ───── Search ───── */
+    .search-wrap {
+      padding: 0 20px 14px;
+      position: relative;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 32px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px;
+      color: var(--text-subtle);
+    }
+    #search-input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--surface);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+      -webkit-appearance: none;
+    }
+    #search-input:focus {
+      border-color: var(--pop);
+      box-shadow: 0 0 0 3px rgba(61,90,64,0.12);
+    }
+    #search-input::placeholder { color: var(--text-subtle); }
+
+    /* ───── Category pills ───── */
+    .cats-wrap {
+      display: flex;
+      gap: 8px;
+      padding: 0 20px 14px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .cats-wrap::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      padding: 6px 16px;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 120ms ease;
+      letter-spacing: 0.02em;
+    }
+    .cat-btn:hover { border-color: var(--pop); color: var(--pop); }
+    .cat-btn.active {
+      background: var(--pop);
+      border-color: var(--pop);
+      color: #fff;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO BANNER — Scroll carrusel
+    ═══════════════════════════════════════════ */
+    .hero-wrap {
+      margin: 0 20px 24px;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-slides {
+      display: flex;
+      transition: transform 0.46s cubic-bezier(.4,0,.2,1);
+    }
+    .hero-slide {
+      min-width: 100%;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 148px;
+    }
+    .hero-slide-text { flex: 1; }
+    .hero-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 6px;
+      opacity: 0.7;
+    }
+    .hero-emoji { font-size: 56px; line-height: 1; user-select: none; }
+
+    .hero-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px;
+    }
+    .hdot {
+      width: 6px; height: 6px; border-radius: 99px;
+      background: rgba(255,255,255,0.4);
+      transition: all 250ms ease;
+    }
+    .hdot.active { width: 18px; background: rgba(255,255,255,0.9); }
+
+    .hero-prev, .hero-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; border-radius: 99px;
+      background: rgba(255,255,255,0.18);
+      color: white;
+      font-size: 16px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      border: none;
+      transition: background 150ms;
+    }
+    .hero-prev { left: 10px; }
+    .hero-next { right: 10px; }
+    .hero-prev:hover, .hero-next:hover { background: rgba(255,255,255,0.3); }
+
+    /* Slides de promoción — imagen completa cuadrada */
+    .promo-slide { min-width: 100%; display: block; background: var(--surface-alt); }
+    .promo-slide img {
+      width: 100%; display: block;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECCIÓN PROMOCIONES (carrusel de packs)
+    ═══════════════════════════════════════════ */
+    .promos-section { margin-bottom: 28px; }
+    .promos-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 4px 20px 12px;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .promos-scroll::-webkit-scrollbar { display: none; }
+
+    .promo-card {
+      scroll-snap-align: start;
+      flex: 0 0 78%;
+      max-width: 280px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .promo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    .promo-card-img { aspect-ratio: 1 / 1; overflow: hidden; background: var(--surface-alt); position: relative; }
+    .promo-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .promo-card-save {
+      position: absolute; top: 8px; right: 8px;
+      background: var(--fungi); color: #fff;
+      font-size: 10px; font-weight: 800;
+      padding: 3px 8px; border-radius: var(--r-sm);
+    }
+
+    .promo-card-body {
+      padding: 12px 14px 14px;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1;
+    }
+    .promo-card-name {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 700;
+      color: var(--text); line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .promo-card-tag {
+      font-size: 11px; color: var(--text-subtle);
+      line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .promo-card-price { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
+    .promo-price-now {
+      font-family: var(--font-display);
+      font-size: 19px; font-weight: 700;
+      color: var(--fungi);
+    }
+    .promo-price-ref { font-size: 12px; color: var(--text-subtle); text-decoration: line-through; }
+
+    .promo-card-btn {
+      margin-top: 8px; width: 100%;
+      background: #25D366; color: #fff;
+      border: none; border-radius: var(--r-md);
+      padding: 10px;
+      font-family: var(--font-body); font-size: 12.5px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      cursor: pointer;
+      transition: opacity 150ms ease, transform 100ms ease;
+    }
+    .promo-card-btn:hover { opacity: 0.9; }
+    .promo-card-btn:active { transform: scale(0.98); }
+    .promo-card-btn svg { width: 16px; height: 16px; }
+
+    /* ═══════════════════════════════════════════
+       BENEFICIOS STRIP — scroll infinito
+    ═══════════════════════════════════════════ */
+    .benefits-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      padding: 10px 0;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .benefits-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: strip-scroll 24s linear infinite;
+    }
+    .benefits-strip:hover .benefits-track { animation-play-state: paused; }
+    @keyframes strip-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .benefit-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .benefit-item span:first-child { font-size: 15px; }
+
+    /* ═══════════════════════════════════════════
+       CATEGORÍA HUB (iconos grandes)
+    ═══════════════════════════════════════════ */
+    .cat-hub {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 0 20px;
+      margin-bottom: 28px;
+    }
+    .cat-hub-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 12px 8px;
+      border-radius: var(--r-lg);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all 150ms ease;
+      font-family: var(--font-body);
+    }
+    .cat-hub-btn:hover { border-color: var(--pop); background: var(--pop-dim); }
+    .cat-hub-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .cat-hub-label {
+      font-size: 10px; font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    /* ═══════════════════════════════════════════
+       PRODUCTOS
+    ═══════════════════════════════════════════ */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+    #catalogo { scroll-margin-top: 150px; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      flex: 1;
+    }
+    #result-count {
+      font-size: 12px;
+      color: var(--text-subtle);
+      font-weight: 500;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Sort select */
+    .sort-wrap { position: relative; flex-shrink: 0; }
+    #sort-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 6px 28px 6px 12px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 150ms;
+    }
+    #sort-select:focus { border-color: var(--pop); }
+    .sort-wrap svg {
+      position: absolute; right: 8px; top: 50%;
+      transform: translateY(-50%);
+      width: 12px; height: 12px;
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+
+    /* Grid de productos */
+    #products-grid, #skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 20px;
+    }
+
+    /* Skeleton loader */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface) 25%, var(--bg) 50%, var(--surface) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: var(--r-md);
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .skeleton-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Tarjeta producto */
+    .product-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-card.agotado { opacity: 0.6; filter: grayscale(40%); }
+
+    .card-img-wrap {
+      position: relative;
+      background: var(--surface-alt);
+      aspect-ratio: 1/1;
+      overflow: hidden;
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Badges */
+    .badge-promo {
+      position: absolute; top: 8px; left: 8px;
+      background: var(--fungi);
+      color: #fff;
+      font-size: 10px; font-weight: 800;
+      padding: 3px 8px;
+      border-radius: var(--r-sm);
+      z-index: 2;
+    }
+    .badge-stock {
+      position: absolute; top: 8px; right: 8px;
+      font-size: 9px; font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--r-sm);
+    }
+    .badge-stock.in  { background: rgba(61,90,64,0.85); color: #fff; }
+    .badge-stock.out { background: rgba(90,80,70,0.8); color: #fff; }
+
+    .badge-ultimas {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(122,78,45,0.9);
+      color: #fff;
+      font-size: 9px; font-weight: 800;
+      text-align: center;
+      padding: 3px 0;
+    }
+
+    .card-body {
+      padding: 12px;
+      display: flex; flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+    .card-benefit {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pop);
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      font-size: 11px;
+      color: var(--text-subtle);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-price-wrap { margin-top: 6px; }
+    .price-old { font-size: 11px; color: var(--text-subtle); text-decoration: line-through; }
+    .price-row { display: flex; align-items: baseline; gap: 6px; }
+    .price-main {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fungi);
+    }
+    .price-pct {
+      font-size: 11px; font-weight: 800;
+      color: var(--fungi-light);
+    }
+    .price-unit { font-size: 10px; color: var(--text-subtle); font-weight: 500; }
+
+    /* Control add/qty */
+    .card-ctrl { margin-top: auto; padding-top: 10px; }
+    .btn-add {
+      width: 100%;
+      background: var(--pop);
+      color: #fff;
+      border: none;
+      padding: 9px 12px;
+      border-radius: var(--r-md);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 150ms ease, transform 100ms ease;
+    }
+    .btn-add:hover { opacity: 0.85; }
+    .btn-add:active { transform: scale(0.97); }
+    .btn-add:disabled {
+      background: var(--surface-alt);
+      color: var(--text-subtle);
+      cursor: not-allowed;
+      opacity: 1;
+    }
+    .qty-stepper {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--pop);
+      border-radius: var(--r-md);
+      padding: 4px 6px;
+    }
+    .qty-btn {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+    .qty-btn:hover { background: rgba(255,255,255,0.3); }
+    .qty-btn:active { transform: scale(0.86); }
+    .qty-num {
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 16px; font-weight: 700;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    /* Empty state */
+    #empty-state {
+      grid-column: 1 / -1;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    #empty-state.show { display: flex; }
+    .empty-icon {
+      width: 64px; height: 64px;
+      border-radius: 99px;
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    /* Fade-up animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.28s ease both; }
+
+    /* ═══════════════════════════════════════════
+       BANNER CTA
+    ═══════════════════════════════════════════ */
+    .cta-banner {
+      margin: 28px 20px 0;
+      background: var(--pop);
+      border-radius: var(--r-xl);
+      padding: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .cta-banner-icon { font-size: 32px; }
+    .cta-banner-text { flex: 1; }
+    .cta-banner-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .cta-banner-sub { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .cta-banner-btn {
+      background: var(--bg);
+      color: var(--pop);
+      font-family: var(--font-body);
+      font-size: 12px; font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--r-md);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 150ms;
+    }
+    .cta-banner-btn:hover { opacity: 0.85; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      margin-top: 40px;
+      background: var(--text);
+      padding: 32px 24px;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bg);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(242,237,230,0.5);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .footer-item { text-align: center; }
+    .footer-item-icon { font-size: 18px; margin-bottom: 4px; }
+    .footer-item-text { font-size: 10px; color: rgba(242,237,230,0.5); line-height: 1.4; }
+    .footer-social {
+      display: flex; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .footer-social-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 8px;
+      border-radius: var(--r-md);
+      background: rgba(242,237,230,0.06);
+      border: 1px solid rgba(242,237,230,0.1);
+      color: rgba(242,237,230,0.85);
+      font-family: var(--font-body);
+      font-size: 11px; font-weight: 600;
+      text-decoration: none;
+      transition: background 150ms ease, transform 120ms ease;
+    }
+    .footer-social-btn:hover { background: rgba(242,237,230,0.12); }
+    .footer-social-btn:active { transform: scale(0.97); }
+    .footer-social-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .footer-credit {
+      font-size: 9px;
+      color: rgba(242,237,230,0.2);
+      text-align: center;
+      letter-spacing: 0.04em;
+      padding-top: 16px;
+      border-top: 1px solid rgba(242,237,230,0.08);
+    }
+
+    /* ═══════════════════════════════════════════
+       FAB WhatsApp / Carrito
+    ═══════════════════════════════════════════ */
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); }
+      70%  { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    #wa-fab {
+      position: fixed; bottom: calc(20px + env(safe-area-inset-bottom)); right: 20px; z-index: 50;
+      display: flex; align-items: center; gap: 8px;
+      background: #25D366;
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 700; font-size: 13px;
+      padding: 12px 18px;
+      border-radius: var(--r-xl);
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      animation: wa-pulse 2.6s infinite;
+      transition: transform 150ms ease;
+    }
+    #wa-fab:hover { transform: scale(1.04); }
+    #wa-fab svg { width: 20px; height: 20px; }
+
+    #cart-fab {
+      position: fixed; bottom: calc(20px + env(safe-area-inset-bottom)); right: 20px; z-index: 50;
+      display: none;
+      align-items: center; gap: 8px;
+      background: var(--pop);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 700; font-size: 13px;
+      padding: 12px 18px;
+      border-radius: var(--r-xl);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      transition: transform 150ms, opacity 150ms;
+    }
+    #cart-fab:hover { transform: scale(1.04); opacity: 0.92; }
+    .fab-count {
+      background: var(--bg);
+      color: var(--pop);
+      font-size: 11px; font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+
+    /* Cart icon shake */
+    @keyframes cart-shake {
+      0%,100% { transform: scale(1); }
+      30%  { transform: scale(1.35) rotate(-8deg); }
+      60%  { transform: scale(1.2) rotate(6deg); }
+    }
+    .cart-shake { animation: cart-shake 0.38s ease; }
+
+    /* ═══════════════════════════════════════════
+       TOAST
+    ═══════════════════════════════════════════ */
+    #toast {
+      position: fixed;
+      bottom: 88px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--text);
+      color: var(--bg);
+      font-size: 12px; font-weight: 700;
+      padding: 9px 20px;
+      border-radius: 99px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 200;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════
+       CARRITO DRAWER
+    ═══════════════════════════════════════════ */
+    #cart-drawer {
+      position: fixed; inset: 0; z-index: 100;
+      visibility: hidden;
+    }
+    #cart-drawer.open { visibility: visible; }
+
+    #cart-overlay {
+      position: absolute; inset: 0;
+      background: rgba(30,26,21,0.55);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #cart-drawer.open #cart-overlay { opacity: 1; }
+
+    #cart-panel {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: min(93vw, 400px);
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+      box-shadow: -4px 0 32px rgba(30,26,21,0.2);
+    }
+    #cart-drawer.open #cart-panel { transform: translateX(0); }
+
+    .drawer-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .drawer-header-title {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 700;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .drawer-close {
+      width: 36px; height: 36px;
+      border-radius: var(--r-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 150ms;
+    }
+    .drawer-close:hover { background: var(--surface-alt); }
+    .drawer-close svg { width: 18px; height: 18px; color: var(--text-muted); }
+
+    #cart-items { flex: 1; overflow-y: auto; padding: 16px; }
+    #cart-items .space-y > * + * { margin-top: 10px; }
+
+    .cart-item {
+      display: flex; gap: 12px;
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+    .cart-item-img {
+      width: 52px; height: 52px;
+      border-radius: var(--r-md);
+      object-fit: cover;
+      background: var(--surface-alt);
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-size: 13px; font-weight: 600;
+      color: var(--text);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cart-item-price { font-size: 12px; color: var(--fungi); font-weight: 700; margin-top: 2px; }
+    .cart-item-stepper {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 8px;
+    }
+    .item-qty-btn {
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px; font-weight: 800;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 120ms;
+    }
+    .item-qty-btn:hover { background: var(--pop); color: #fff; border-color: var(--pop); }
+    .item-qty-num { font-size: 14px; font-weight: 700; color: var(--text); min-width: 20px; text-align: center; }
+
+    #cart-empty {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 24px;
+    }
+    .cart-empty-icon { font-size: 48px; margin-bottom: 16px; }
+    .cart-empty-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--text); }
+    .cart-empty-sub { font-size: 13px; color: var(--text-subtle); margin-top: 6px; }
+
+    #cart-footer {
+      padding: 16px 20px 24px;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+      display: none;
+    }
+    #cart-footer.visible { display: block; }
+
+    .totals-box {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .totals-row {
+      display: flex; justify-content: space-between;
+      font-size: 13px; margin-bottom: 6px;
+    }
+    .totals-row:last-child { margin-bottom: 0; }
+    .totals-label { color: var(--text-muted); }
+    .totals-value { font-weight: 600; color: var(--text); }
+    .totals-free { color: #3a7d44; font-weight: 700; }
+    .totals-total {
+      display: flex; justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+    .totals-total-label {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 700; color: var(--text);
+    }
+    .totals-total-value {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 700; color: var(--fungi);
+    }
+
+    .note-wrap { margin-bottom: 12px; }
+    .note-label { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: block; }
+    #order-note {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      font-family: var(--font-body);
+      font-size: 13px; color: var(--text);
+      resize: none; outline: none;
+      transition: border-color 150ms;
+    }
+    #order-note:focus { border-color: var(--pop); }
+
+    .btn-pagar {
+      width: 100%;
+      background: var(--pop);
+      color: #fff;
+      border: none;
+      padding: 15px 20px;
+      border-radius: var(--r-xl);
+      font-family: var(--font-body);
+      font-size: 14px; font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: opacity 150ms, transform 100ms;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-pagar:hover { opacity: 0.9; }
+    .btn-pagar:active { transform: scale(0.98); }
+
+    .btn-wa-secondary {
+      width: 100%;
+      background: transparent;
+      color: #25D366;
+      border: 1.5px solid #25D366;
+      padding: 11px 20px;
+      border-radius: var(--r-xl);
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 8px;
+      transition: background 150ms;
+    }
+    .btn-wa-secondary:hover { background: rgba(37,211,102,0.07); }
+
+    /* ═══════════════════════════════════════════
+       MODAL PAGO (bottom sheet)
+    ═══════════════════════════════════════════ */
+    #pay-modal {
+      position: fixed; inset: 0; z-index: 200;
+      visibility: hidden;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    #pay-modal.open { visibility: visible; }
+    #pay-overlay {
+      position: absolute; inset: 0;
+      background: rgba(30,26,21,0.6);
+      backdrop-filter: blur(3px);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    #pay-modal.open #pay-overlay { opacity: 1; }
+    #pay-sheet {
+      position: relative; z-index: 1;
+      width: min(100vw, 440px);
+      background: var(--bg);
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+      transform: translateY(100%);
+      transition: transform 0.36s cubic-bezier(.4,0,.2,1);
+      max-height: 92svh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+    }
+    #pay-modal.open #pay-sheet { transform: translateY(0); }
+
+    .pay-handle {
+      display: flex; justify-content: center;
+      padding: 12px 0 4px;
+    }
+    .pay-handle-bar { width: 36px; height: 4px; border-radius: 99px; background: var(--border); }
+
+    .pay-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pay-header-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .pay-sub { font-size: 12px; color: var(--text-subtle); margin-top: 2px; }
+    .pay-close {
+      width: 36px; height: 36px;
+      border-radius: var(--r-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .pay-close svg { width: 18px; height: 18px; color: var(--text-muted); }
+
+    .pay-step { display: none; }
+    .pay-step.active { display: block; }
+
+    .pay-section { padding: 20px 20px 0; }
+    .pay-section-label {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 12px;
+    }
+
+    .pay-summary-box {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      padding: 14px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .pay-method-list { display: flex; flex-direction: column; gap: 10px; }
+    .pay-method-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg);
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .pay-method-card:hover { border-color: var(--pop); }
+    .pay-method-card:has(input:checked) { border-color: var(--pop); background: var(--pop-dim); }
+    .pay-method-card input { display: none; }
+    .pay-method-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .pay-method-info { flex: 1; }
+    .pay-method-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .pay-method-desc { font-size: 11px; color: var(--text-subtle); margin-top: 2px; }
+
+    /* Spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 5px solid var(--border);
+      border-top-color: var(--pop);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes checkmark-pop {
+      0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+      70%  { transform: scale(1.15) rotate(3deg); }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    .checkmark-anim { animation: checkmark-pop 0.5s cubic-bezier(.4,0,.2,1) both; }
+
+    /* Transfer box */
+    .transfer-box {
+      background: var(--fungi-dim);
+      border: 1.5px solid #d4b69a;
+      border-radius: var(--r-lg);
+      padding: 16px;
+    }
+    .transfer-row {
+      display: flex; justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #d4b69a;
+      font-size: 13px;
+    }
+    .transfer-row:last-child { border-bottom: none; }
+    .tr-label { color: var(--text-muted); }
+    .tr-value { font-weight: 700; color: var(--fungi); }
+
+    /* Alerts inline */
+    .alert-warn {
+      background: #fef9c3;
+      border: 1px solid #fde047;
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      font-size: 12px; font-weight: 600;
+      color: #854d0e;
+    }
+    .alert-success {
+      background: var(--pop-dim);
+      border: 1px solid #a7c8aa;
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      font-size: 12px; font-weight: 600;
+      color: var(--pop);
+    }
+
+    .pay-spacer { height: 20px; }
+    .pay-cta {
+      padding: 16px 20px 24px;
+    }
+
+    /* Form inputs pago */
+    .form-label { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: block; }
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text);
+      outline: none;
+      transition: border-color 150ms;
+      -webkit-appearance: none;
+    }
+    .form-input:focus { border-color: var(--pop); box-shadow: 0 0 0 3px rgba(61,90,64,0.1); }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-back { background: none; border: none; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--text-subtle); cursor: pointer; padding: 8px; display: block; width: 100%; text-align: center; }
+    .btn-back:hover { color: var(--text-muted); }
+  </style>
+</head>
+
+<body>
+<div id="app">
+
+  <!-- ═════ HEADER ═════ -->
+  <header id="site-header">
+    <div class="header-top">
+      <div class="logo-mark">🍄</div>
+      <div class="logo-text">
+        <div class="logo-text-main">Gran Espíritu</div>
+        <div class="logo-text-sub">Medicina Fungi Natural</div>
+      </div>
+      <button id="cart-toggle-btn" onclick="openCart()" aria-label="Ver carrito">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span id="cart-badge" class="hidden">0</span>
+      </button>
+    </div>
+
+    <div class="search-wrap">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input id="search-input" type="search" placeholder="Buscar hongos, beneficios..." autocomplete="off" />
+    </div>
+
+    <div class="cats-wrap">
+      <button class="cat-btn active" data-cat="Todos">Todos</button>
+      <button class="cat-btn" data-cat="Hongos">🍄 Hongos</button>
+      <button class="cat-btn" data-cat="Energía">⚡ Energía</button>
+      <button class="cat-btn" data-cat="Foco">🧠 Foco</button>
+      <button class="cat-btn" data-cat="Calma">🌿 Calma</button>
+      <button class="cat-btn" data-cat="Inmunidad">🛡 Inmunidad</button>
+      <button class="cat-btn" data-cat="Adaptógenos">🌱 Adaptógenos</button>
+      <button class="cat-btn" data-cat="Cuidado">✨ Cuidado</button>
+    </div>
+  </header>
+
+  <!-- ═════ HERO CARRUSEL — PROMOCIONES ═════ -->
+  <div class="hero-wrap promo-hero" id="hero">
+    <div class="hero-slides" id="hero-track"><!-- generado por JS desde PROMOS_DATA --></div>
+    <button class="hero-prev" id="hero-prev" aria-label="Promoción anterior">‹</button>
+    <button class="hero-next" id="hero-next" aria-label="Promoción siguiente">›</button>
+    <div class="hero-dots" id="hero-dots"><!-- generado por JS --></div>
+  </div>
+
+  <!-- ═════ BENEFICIOS STRIP ═════ -->
+  <div class="benefits-strip">
+    <div class="benefits-track">
+      <!-- Primera pasada -->
+      <span class="benefit-item"><span>🍄</span> Extracto doble concentrado</span>
+      <span class="benefit-item"><span>🌿</span> 100% natural y orgánico</span>
+      <span class="benefit-item"><span>📦</span> Envío a todo Chile</span>
+      <span class="benefit-item"><span>✓</span> Sin rellenos ni aditivos</span>
+      <span class="benefit-item"><span>💬</span> Asesoría personalizada</span>
+      <span class="benefit-item"><span>🔬</span> Beta-glucanos certificados</span>
+      <span class="benefit-item"><span>🌲</span> Sostenible y responsable</span>
+      <!-- Segunda pasada (espejo loop) -->
+      <span class="benefit-item"><span>🍄</span> Extracto doble concentrado</span>
+      <span class="benefit-item"><span>🌿</span> 100% natural y orgánico</span>
+      <span class="benefit-item"><span>📦</span> Envío a todo Chile</span>
+      <span class="benefit-item"><span>✓</span> Sin rellenos ni aditivos</span>
+      <span class="benefit-item"><span>💬</span> Asesoría personalizada</span>
+      <span class="benefit-item"><span>🔬</span> Beta-glucanos certificados</span>
+      <span class="benefit-item"><span>🌲</span> Sostenible y responsable</span>
+    </div>
+  </div>
+
+  <!-- ═════ PROMOCIONES ═════ -->
+  <section class="promos-section" id="promos">
+    <div class="section-header" style="margin-bottom:12px;">
+      <div>
+        <h2 class="section-title">🔥 Promociones</h2>
+        <span style="font-size:12px;color:var(--text-subtle);font-weight:500;display:block;margin-top:2px;">Packs combinados · ahorra hasta 25%</span>
+      </div>
+      <span id="promos-count" style="font-size:12px;color:var(--fungi);font-weight:700;flex-shrink:0;"></span>
+    </div>
+    <div class="promos-scroll" id="promos-scroll"><!-- generado por JS desde PROMOS_DATA --></div>
+  </section>
+
+  <!-- ═════ CATEGORÍA HUB ═════ -->
+  <div class="cat-hub" style="grid-template-columns:repeat(4,1fr);">
+    <button class="cat-hub-btn" onclick="filterCat('Foco')">
+      <div class="cat-hub-icon" style="background:#e8f0e8;">🧠</div>
+      <span class="cat-hub-label">Foco &<br/>Memoria</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Energía')">
+      <div class="cat-hub-icon" style="background:#fef3e2;">⚡</div>
+      <span class="cat-hub-label">Energía &<br/>Vigor</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Calma')">
+      <div class="cat-hub-icon" style="background:#e8ede8;">🌿</div>
+      <span class="cat-hub-label">Calma &<br/>Sueño</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Inmunidad')">
+      <div class="cat-hub-icon" style="background:#ede8f0;">🛡</div>
+      <span class="cat-hub-label">Inmunidad</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Hongos')">
+      <div class="cat-hub-icon" style="background:#f0ece4;">🍄</div>
+      <span class="cat-hub-label">Hongos<br/>Medicinales</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Adaptógenos')">
+      <div class="cat-hub-icon" style="background:#e4ede8;">🌱</div>
+      <span class="cat-hub-label">Adaptógenos<br/>Ayurvédicos</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Cuidado')">
+      <div class="cat-hub-icon" style="background:#f5eef0;">✨</div>
+      <span class="cat-hub-label">Cuidado<br/>Personal</span>
+    </button>
+    <button class="cat-hub-btn" onclick="filterCat('Todos')">
+      <div class="cat-hub-icon" style="background:#ece6dc;">🌲</div>
+      <span class="cat-hub-label">Ver<br/>Todo</span>
+    </button>
+  </div>
+
+  <!-- ═════ SECCIÓN PRODUCTOS ═════ -->
+  <div class="section-header" id="catalogo">
+    <div>
+      <h2 class="section-title" id="section-title">Catálogo Completo</h2>
+      <span id="result-count"></span>
+    </div>
+    <div class="sort-wrap">
+      <select id="sort-select">
+        <option value="default">Relevancia</option>
+        <option value="price-asc">Menor precio</option>
+        <option value="price-desc">Mayor precio</option>
+        <option value="discount">Descuento</option>
+      </select>
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Skeleton loader -->
+  <div id="skeleton-grid">
+    <div class="skeleton-card">
+      <div class="skeleton" style="height:160px;"></div>
+      <div style="padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div class="skeleton" style="height:10px;width:50%;"></div>
+        <div class="skeleton" style="height:14px;width:80%;"></div>
+        <div class="skeleton" style="height:20px;width:40%;"></div>
+        <div class="skeleton" style="height:34px;width:100%;margin-top:4px;"></div>
+      </div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton" style="height:160px;"></div>
+      <div style="padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div class="skeleton" style="height:10px;width:50%;"></div>
+        <div class="skeleton" style="height:14px;width:80%;"></div>
+        <div class="skeleton" style="height:20px;width:40%;"></div>
+        <div class="skeleton" style="height:34px;width:100%;margin-top:4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid real de productos -->
+  <div id="products-grid" style="display:none;"></div>
+
+  <!-- Empty state -->
+  <div id="empty-state">
+    <div class="empty-icon">🔍</div>
+    <p style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);">Sin resultados</p>
+    <p style="font-size:13px;color:var(--text-subtle);margin-top:6px;">Prueba con otro término o categoría</p>
+    <button onclick="resetSearch()" style="margin-top:20px;background:var(--pop);color:#fff;border:none;padding:10px 24px;border-radius:var(--r-xl);font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">Ver todos</button>
+  </div>
+
+  <!-- ═════ CTA BANNER ═════ -->
+  <div class="cta-banner">
+    <div class="cta-banner-icon">🌱</div>
+    <div class="cta-banner-text">
+      <div class="cta-banner-title">¿Cuál es tu objetivo?</div>
+      <div class="cta-banner-sub">Te ayudamos a elegir el hongo ideal</div>
+    </div>
+    <button class="cta-banner-btn" onclick="window.open('https://wa.me/56947857304?text=Hola%2C%20necesito%20asesor%C3%ADa%20sobre%20qu%C3%A9%20hongo%20me%20conviene%20🍄','_blank')">Asesoría →</button>
+  </div>
+
+  <!-- ═════ FOOTER ═════ -->
+  <footer>
+    <div class="footer-brand">Gran Espíritu</div>
+    <div class="footer-tagline">Medicina del bosque para la mente y el cuerpo</div>
+    <div class="footer-grid">
+      <div class="footer-item">
+        <div class="footer-item-icon">📍</div>
+        <div class="footer-item-text">Chile<br/>Envíos nacionales</div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-item-icon">🕐</div>
+        <div class="footer-item-text">Lun–Vie<br/>9:00 – 19:00</div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-item-icon">💬</div>
+        <div class="footer-item-text">WhatsApp<br/>+56 9 4785 7304</div>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <a class="footer-social-btn" href="https://wa.me/56947857304?text=Hola%20Gran%20Esp%C3%ADritu%20🍄" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.86L.057 23.75a.5.5 0 00.609.61l5.975-1.566A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/></svg>
+        WhatsApp
+      </a>
+      <a class="footer-social-btn" href="https://www.instagram.com/granespiri.tu.official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @granespiri.tu.official
+      </a>
+    </div>
+
+    <div class="footer-credit">Desarrollado con IA · nico.agenteia</div>
+  </footer>
+
+</div><!-- /app -->
+
+<!-- ═════ FAB WhatsApp ═════ -->
+<a id="wa-fab" href="https://wa.me/56947857304?text=Hola%20Gran%20Esp%C3%ADritu%20🍄%2C%20quiero%20consultar%20el%20cat%C3%A1logo"
+   target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.86L.057 23.75a.5.5 0 00.609.61l5.975-1.566A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/>
+  </svg>
+  Consultar
+</a>
+
+<!-- FAB Carrito -->
+<button id="cart-fab" onclick="openCart()">
+  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 01-8 0"/>
+  </svg>
+  <span>Ver pedido</span>
+  <span class="fab-count" id="fab-count">0</span>
+</button>
+
+<!-- ═════ TOAST ═════ -->
+<div id="toast"></div>
+
+<!-- ═════════════════════════════════════════════
+     MODAL PAGO (bottom sheet)
+═════════════════════════════════════════════ -->
+<div id="pay-modal">
+  <div id="pay-overlay" onclick="closePay()"></div>
+  <div id="pay-sheet">
+
+    <div class="pay-handle"><div class="pay-handle-bar"></div></div>
+
+    <div class="pay-header">
+      <div>
+        <div class="pay-header-title" id="pay-title">Finalizar pedido</div>
+        <div class="pay-sub" id="pay-subtitle">Elige cómo quieres pagar</div>
+      </div>
+      <button class="pay-close" onclick="closePay()" id="pay-close-btn">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- STEP 1: Resumen + Método -->
+    <div class="pay-step active" id="pay-step-1">
+      <div class="pay-section">
+        <div class="pay-section-label">Resumen del pedido</div>
+        <div class="pay-summary-box">
+          <div id="pay-items-list" style="margin-bottom:12px;max-height:150px;overflow-y:auto;"></div>
+          <div style="border-top:1px solid var(--border);padding-top:10px;">
+            <div class="totals-row"><span class="totals-label">Subtotal</span><span id="pay-subtotal" class="totals-value">$0</span></div>
+            <div class="totals-row"><span class="totals-label">Envío</span><span class="totals-free">Coordinado por WA ✓</span></div>
+            <div class="totals-total">
+              <span class="totals-total-label">TOTAL</span>
+              <span id="pay-total" class="totals-total-value">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-section-label">Método de pago</div>
+        <div class="pay-method-list">
+          <label class="pay-method-card">
+            <input type="radio" name="pay-method" value="transfer" />
+            <div class="pay-method-icon" style="background:#e6f4ea;">🏦</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">Transferencia bancaria</div>
+              <div class="pay-method-desc">Te enviamos datos al confirmar</div>
+            </div>
+          </label>
+          <label class="pay-method-card">
+            <input type="radio" name="pay-method" value="cash" />
+            <div class="pay-method-icon" style="background:#fef9e7;">💵</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">Efectivo / Débito</div>
+              <div class="pay-method-desc">Paga al retirar o coordinar entrega</div>
+            </div>
+          </label>
+          <label class="pay-method-card">
+            <input type="radio" name="pay-method" value="webpay" />
+            <div class="pay-method-icon" style="background:#e8eeff;">💳</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">Tarjeta (Webpay Plus)</div>
+              <div class="pay-method-desc">Débito, crédito · Cuotas sin interés</div>
+            </div>
+          </label>
+        </div>
+        <div class="pay-spacer"></div>
+      </div>
+      <div class="pay-cta">
+        <button onclick="goPayStep2()" class="btn-pagar">Continuar →</button>
+        <p style="text-align:center;font-size:11px;color:var(--text-subtle);margin-top:8px;">🔒 Proceso seguro · Pedido coordinado por WhatsApp</p>
+      </div>
+    </div>
+
+    <!-- STEP 2A: Transferencia -->
+    <div class="pay-step" id="pay-step-transfer">
+      <div class="pay-section">
+        <div class="pay-section-label">Datos para transferencia</div>
+        <div class="transfer-box">
+          <div class="transfer-row"><span class="tr-label">Banco</span><span class="tr-value">Banco Estado</span></div>
+          <div class="transfer-row"><span class="tr-label">Tipo</span><span class="tr-value">Cuenta Corriente</span></div>
+          <div class="transfer-row"><span class="tr-label">N° Cuenta</span><span class="tr-value">0123456789</span></div>
+          <div class="transfer-row"><span class="tr-label">RUT</span><span class="tr-value">12.345.678-9</span></div>
+          <div class="transfer-row"><span class="tr-label">Nombre</span><span class="tr-value">Gran Espíritu</span></div>
+          <div class="transfer-row"><span class="tr-label">Monto exacto</span><span class="tr-value" id="transfer-amount">$0</span></div>
+        </div>
+        <div class="pay-spacer"></div>
+        <div class="alert-warn">⚠️ Envíanos el comprobante por WhatsApp para confirmar tu pedido. Reservamos por 2 horas.</div>
+        <div class="pay-spacer"></div>
+      </div>
+      <div class="pay-cta">
+        <button onclick="confirmTransfer()" class="btn-pagar">✓ Ya transferí — Confirmar</button>
+        <button onclick="backToPayStep1()" class="btn-back">← Cambiar método</button>
+      </div>
+    </div>
+
+    <!-- STEP 2B: Efectivo -->
+    <div class="pay-step" id="pay-step-cash">
+      <div class="pay-section" style="text-align:center;">
+        <div style="font-size:56px;margin-bottom:16px;">💵</div>
+        <div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;">Pago al retirar o entregar</div>
+        <p style="font-size:13px;color:var(--text-muted);">Tu pedido queda reservado. Coordinaremos la entrega por WhatsApp.</p>
+        <div style="background:var(--surface);border-radius:var(--r-lg);padding:16px;margin-top:20px;border:1px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:6px;">Monto a pagar</div>
+          <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--fungi);" id="cash-amount">$0</div>
+        </div>
+        <div class="pay-spacer"></div>
+      </div>
+      <div class="pay-cta">
+        <button onclick="confirmCash()" class="btn-pagar">✓ Confirmar pedido</button>
+        <button onclick="backToPayStep1()" class="btn-back">← Cambiar método</button>
+      </div>
+    </div>
+
+    <!-- STEP 2C: Webpay -->
+    <div class="pay-step" id="pay-step-webpay">
+      <div class="pay-section">
+        <div style="background:var(--pop);border-radius:var(--r-lg);padding:16px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:4px;">Pagando en</div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">Gran Espíritu</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:10px;color:rgba(255,255,255,0.6);font-weight:600;">Total</div>
+              <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;" id="wp-total-display">$0</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:#fff;font-weight:800;font-size:13px;">Webpay Plus</span>
+            <span style="color:rgba(255,255,255,0.7);font-size:11px;">Secured by Transbank 🔒</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div>
+            <label class="form-label">Número de tarjeta</label>
+            <input id="wp-card-number" type="tel" placeholder="0000 0000 0000 0000" maxlength="19"
+              class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
+              oninput="formatCardNumber(this)" />
+          </div>
+          <div>
+            <label class="form-label">Nombre en la tarjeta</label>
+            <input id="wp-card-name" type="text" placeholder="Como aparece en tu tarjeta"
+              class="form-input" style="text-transform:uppercase;" />
+          </div>
+          <div class="form-grid-2">
+            <div>
+              <label class="form-label">Vencimiento</label>
+              <input id="wp-expiry" type="tel" placeholder="MM/AA" maxlength="5"
+                class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
+                oninput="formatExpiry(this)" />
+            </div>
+            <div>
+              <label class="form-label">CVV / CVC</label>
+              <input id="wp-cvv" type="tel" placeholder="•••" maxlength="4"
+                class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
+                oninput="this.value=this.value.replace(/\D/g,'')" />
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Cuotas</label>
+            <select id="wp-cuotas" class="form-input">
+              <option value="1">Sin cuotas (1 pago)</option>
+              <option value="3">3 cuotas sin interés</option>
+              <option value="6">6 cuotas sin interés</option>
+              <option value="12">12 cuotas sin interés</option>
+            </select>
+          </div>
+        </div>
+        <div class="pay-spacer"></div>
+      </div>
+      <div class="pay-cta">
+        <button onclick="processWebpay()" class="btn-pagar">🔒 Pagar <span id="wp-btn-total">$0</span></button>
+        <button onclick="backToPayStep1()" class="btn-back">← Cambiar método</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Procesando -->
+    <div class="pay-step" id="pay-step-processing">
+      <div style="padding:60px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
+        <div class="spinner"></div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text);">Procesando tu pago</div>
+          <div style="font-size:13px;color:var(--text-subtle);margin-top:6px;">Conectando con Transbank...</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-subtle);">🔒 No cierres esta ventana</div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Éxito -->
+    <div class="pay-step" id="pay-step-success">
+      <div style="padding:48px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;">
+        <div class="checkmark-anim" style="width:72px;height:72px;border-radius:99px;background:var(--pop-dim);display:flex;align-items:center;justify-content:center;">
+          <svg width="36" height="36" fill="none" stroke="var(--pop)" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--pop);">¡Pedido confirmado!</div>
+          <div style="font-size:13px;color:var(--text-subtle);margin-top:6px;">Tu pedido ha sido recibido con éxito</div>
+        </div>
+        <div style="background:var(--surface);border-radius:var(--r-lg);padding:16px 24px;width:100%;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:6px;">N° de pedido</div>
+          <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);" id="pay-order-number">#GE-0000</div>
+          <div style="font-size:12px;color:var(--text-subtle);margin-top:4px;" id="pay-method-label">Transferencia</div>
+        </div>
+        <div class="alert-success" style="width:100%;text-align:left;">✅ Recibirás confirmación por WhatsApp con los detalles de entrega o retiro.</div>
+        <button onclick="sendSuccessWhatsApp()" class="btn-pagar" style="width:100%;background:#25D366;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.86L.057 23.75a.5.5 0 00.609.61l5.975-1.566A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/>
+          </svg>
+          Enviar comprobante por WhatsApp
+        </button>
+        <button onclick="closePay(); resetCart();" class="btn-back">Volver al catálogo</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═════════════════════════════════════════════
+     CARRITO DRAWER
+═════════════════════════════════════════════ -->
+<div id="cart-drawer">
+  <div id="cart-overlay" onclick="closeCart()"></div>
+  <div id="cart-panel">
+
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-header-title">Tu pedido 🍄</div>
+        <div id="drawer-count" style="font-size:12px;color:var(--text-subtle);margin-top:2px;">0 productos</div>
+      </div>
+      <button class="drawer-close" onclick="closeCart()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="cart-items" class="space-y" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;"></div>
+
+    <div id="cart-empty" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;">
+      <div class="cart-empty-icon">🌿</div>
+      <div class="cart-empty-title">Tu pedido está vacío</div>
+      <div class="cart-empty-sub">Agrega hongos del catálogo</div>
+      <button onclick="closeCart()" style="margin-top:20px;background:var(--pop);color:#fff;border:none;padding:10px 24px;border-radius:var(--r-xl);font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">Explorar catálogo</button>
+    </div>
+
+    <div id="cart-footer">
+      <div class="totals-box">
+        <div class="totals-row"><span class="totals-label">Subtotal</span><span id="subtotal-display" class="totals-value">$0</span></div>
+        <div class="totals-row"><span class="totals-label">Envío</span><span class="totals-free">Coordinado por WA</span></div>
+        <div class="totals-total">
+          <span class="totals-total-label">Total estimado</span>
+          <span id="total-display" class="totals-total-value">$0</span>
+        </div>
+      </div>
+
+      <div class="note-wrap">
+        <label class="note-label">Nota (opcional)</label>
+        <textarea id="order-note" rows="2" placeholder="Consultas, instrucciones de entrega..."></textarea>
+      </div>
+
+      <button onclick="openPay()" class="btn-pagar">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
+        </svg>
+        Proceder al pago
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <button onclick="sendOrderWhatsApp()" class="btn-wa-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.86L.057 23.75a.5.5 0 00.609.61l5.975-1.566A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/>
+        </svg>
+        Enviar pedido por WhatsApp
+      </button>
+      <p style="text-align:center;font-size:11px;color:var(--text-subtle);margin-top:8px;">Coordinamos disponibilidad y entrega</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═════════════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════════════ -->
+<script>
+  // ─────────────────────────────────────────────
+  // DATOS PRODUCTOS — Catálogo Gran Espíritu
+  // Para producción: reemplazar con fetch('./productos.json')
+  // o webhook n8n → actualización automática
+  // ─────────────────────────────────────────────
+  const PRODUCTS_DATA = [
+    // ── LÍNEA HONGOS MEDICINALES ────────────────────────────────────
+    {
+      id: 1,
+      nombre: "Melena de León · Tintura",
+      nombreCientifico: "Hericium erinaceus",
+      categoria: "Foco",
+      marca: "Gran Espíritu",
+      beneficio: "Neuroprotección & Foco",
+      descripcion: "Tintura de extracto doble. Mejora la memoria, concentración y salud del sistema nervioso. Promueve NGF.",
+      precio: 14990,
+      precioNormal: 18990,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/hero-bosque1.jpg",
+      stock: true,
+      promo: "Más vendido",
+      unidadesRestantes: null
+    },
+    {
+      id: 2,
+      nombre: "Reishi · Cápsulas",
+      nombreCientifico: "Ganoderma lucidum",
+      categoria: "Calma",
+      marca: "Gran Espíritu",
+      beneficio: "Equilibrio & Calma",
+      descripcion: "Cápsulas de Reishi. El «Hongo de la Inmortalidad». Reduce el estrés, mejora el sueño y fortalece defensas.",
+      precio: 16990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/hero-bosque2.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 3,
+      nombre: "Reishi · Tintura",
+      nombreCientifico: "Ganoderma lucidum",
+      categoria: "Calma",
+      marca: "Gran Espíritu",
+      beneficio: "Equilibrio & Calma",
+      descripcion: "Tintura líquida de Reishi. Absorción rápida. Ideal para quienes buscan calma profunda y soporte inmune.",
+      precio: 14990,
+      precioNormal: null,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/hero-bosque3.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 4,
+      nombre: "Cola de Pavo · Cápsulas",
+      nombreCientifico: "Trametes versicolor",
+      categoria: "Inmunidad",
+      marca: "Gran Espíritu",
+      beneficio: "Defensas & Microbiota",
+      descripcion: "Cápsulas de Cola de Pavo. Contiene PSK y PSP, polisacáridos que potencian la inmunidad y la microbiota.",
+      precio: 15990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/turkey-tail.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 5,
+      nombre: "Cola de Pavo · Tintura",
+      nombreCientifico: "Trametes versicolor",
+      categoria: "Inmunidad",
+      marca: "Gran Espíritu",
+      beneficio: "Defensas & Microbiota",
+      descripcion: "Tintura de Cola de Pavo de absorción directa. Potente soporte para el sistema inmune y la flora intestinal.",
+      precio: 13990,
+      precioNormal: null,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/combo-trio.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 6,
+      nombre: "Cordyceps · Cápsulas",
+      nombreCientifico: "Cordyceps militaris",
+      categoria: "Energía",
+      marca: "Gran Espíritu",
+      beneficio: "Energía & Rendimiento",
+      descripcion: "Cápsulas de Cordyceps. Aumenta resistencia física, optimiza ATP celular y mejora capacidad respiratoria.",
+      precio: 17990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/cordyceps.jpg",
+      stock: true,
+      promo: "Popular",
+      unidadesRestantes: null
+    },
+    {
+      id: 7,
+      nombre: "Cordyceps · Tintura",
+      nombreCientifico: "Cordyceps militaris",
+      categoria: "Energía",
+      marca: "Gran Espíritu",
+      beneficio: "Energía & ATP",
+      descripcion: "Tintura de Cordyceps de rápida absorción. Ideal pre-entreno o para mejorar el rendimiento durante el día.",
+      precio: 14990,
+      precioNormal: 17990,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/melena-leon.jpg",
+      stock: true,
+      promo: "-17%",
+      unidadesRestantes: null
+    },
+    {
+      id: 8,
+      nombre: "Hongo del Sol · Tintura",
+      nombreCientifico: "Agaricus blazei",
+      categoria: "Inmunidad",
+      marca: "Gran Espíritu",
+      beneficio: "Antiviral & Inmunomodulador",
+      descripcion: "Tintura de Hongo del Sol. Potente inmunomodulador, antiviral y antifúngico natural. Apoya defensas celulares.",
+      precio: 13990,
+      precioNormal: null,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/chaga.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 9,
+      nombre: "Shiitake · Cápsulas",
+      nombreCientifico: "Lentinula edodes",
+      categoria: "Hongos",
+      marca: "Gran Espíritu",
+      beneficio: "Nutrición & Defensas",
+      descripcion: "Cápsulas de Shiitake. Rico en Lentinán y Eritadenina. Nutre, protege el corazón y sostiene el sistema inmune.",
+      precio: 14990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura-reishi.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 10,
+      nombre: "Shiitake · Tintura",
+      nombreCientifico: "Lentinula edodes",
+      categoria: "Hongos",
+      marca: "Gran Espíritu",
+      beneficio: "Nutrición & Defensas",
+      descripcion: "Tintura de Shiitake de extracto puro. Absorción directa. Apoya la salud cardiovascular e inmune.",
+      precio: 12990,
+      precioNormal: null,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/ambient1.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 11,
+      nombre: "Hongo del Sol · Cápsulas",
+      nombreCientifico: "Agaricus blazei",
+      categoria: "Inmunidad",
+      marca: "Gran Espíritu",
+      beneficio: "Inmunomodulador",
+      descripcion: "Cápsulas de Hongo del Sol. Contiene beta-glucanos de alta potencia. Refuerza el sistema inmune a nivel profundo.",
+      precio: 15990,
+      precioNormal: 18990,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/ambient2.jpg",
+      stock: true,
+      promo: "-16%",
+      unidadesRestantes: 5
+    },
+    {
+      id: 12,
+      nombre: "Melena de León · Cápsulas",
+      nombreCientifico: "Hericium erinaceus",
+      categoria: "Foco",
+      marca: "Gran Espíritu",
+      beneficio: "Neuroprotección & Memoria",
+      descripcion: "Cápsulas de Melena de León. Estimula la producción de NGF para neuroplasticidad y concentración sostenida.",
+      precio: 16990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/ambient3.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    // ── LÍNEA ADAPTÓGENOS AYURVÉDICOS ──────────────────────────────
+    {
+      id: 13,
+      nombre: "Maca · Cápsulas",
+      nombreCientifico: "Lepidium meyenii",
+      categoria: "Adaptógenos",
+      marca: "Gran Espíritu",
+      beneficio: "Energía & Vitalidad",
+      descripcion: "Maca andina en cápsulas. Regula el sistema hormonal, aumenta energía y vitalidad. Adaptógeno ancestral peruano.",
+      precio: 12990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura-melena.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 14,
+      nombre: "Ashwagandha · Cápsulas",
+      nombreCientifico: "Withania somnifera",
+      categoria: "Adaptógenos",
+      marca: "Gran Espíritu",
+      beneficio: "Calma, Energía & Foco",
+      descripcion: "Ashwagandha (KSM-66). Reduce el cortisol, mejora el foco, aumenta energía y promueve sueño reparador.",
+      precio: 13990,
+      precioNormal: 16990,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura3.jpg",
+      stock: true,
+      promo: "-18%",
+      unidadesRestantes: null
+    },
+    {
+      id: 15,
+      nombre: "Neem · Cápsulas",
+      nombreCientifico: "Azadirachta indica",
+      categoria: "Adaptógenos",
+      marca: "Gran Espíritu",
+      beneficio: "Limpieza & Defensas",
+      descripcion: "Neem en cápsulas. Depurativo natural, antifúngico, antibacteriano. Apoya la salud de la piel y cuerpo.",
+      precio: 11990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura4.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 16,
+      nombre: "Shatavari · Cápsulas",
+      nombreCientifico: "Asparagus racemosus",
+      categoria: "Adaptógenos",
+      marca: "Gran Espíritu",
+      beneficio: "Salud Femenina & Vitalidad",
+      descripcion: "Shatavari en cápsulas. El tónico femenino del Ayurveda. Equilibra hormonas, nutre y da vitalidad profunda.",
+      precio: 12990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura5.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 17,
+      nombre: "Triphala · Cápsulas",
+      nombreCientifico: "Emblica + Terminalia spp.",
+      categoria: "Adaptógenos",
+      marca: "Gran Espíritu",
+      beneficio: "Digestión & Depuración",
+      descripcion: "Triphala, la fórmula ayurvédica de 3 frutas sagradas. Depura, regula intestino y protege el organismo.",
+      precio: 11990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/tintura6.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    // ── CUIDADO PERSONAL ───────────────────────────────────────────
+    {
+      id: 18,
+      nombre: "Crema Nocturna de Reishi",
+      nombreCientifico: "Ganoderma lucidum",
+      categoria: "Cuidado",
+      marca: "Gran Espíritu",
+      beneficio: "Regeneración & Antienvejecimiento",
+      descripcion: "Crema facial nocturna con extracto de Reishi. Antioxidante, regeneradora. Para piel luminosa y descansada.",
+      precio: 19990,
+      precioNormal: 24990,
+      precioUnidad: "30ml · Uso nocturno",
+      imagen: "./img/reishi.jpg",
+      stock: true,
+      promo: "-20%",
+      unidadesRestantes: 3
+    }
+  ];
+
+  // ─────────────────────────────────────────────
+  // PROMOCIONES — Packs combinados Gran Espíritu
+  // Imágenes en ./img/promos/
+  // ─────────────────────────────────────────────
+  const PROMOS_DATA = [
+    {
+      id: 'flash',
+      nombre: 'Promo Flash',
+      tag: 'Tu dúo de bienestar a elección',
+      img: './img/promos/promo-flash.jpg',
+      incluye: ['1 Triple extracto de hongo a elección', '1 frasco de 30 cápsulas (hongo o planta)'],
+      precio: 19990, precioRef: 26980
+    },
+    {
+      id: 'zen',
+      nombre: 'Promo Zen',
+      tag: 'Equilibrio físico y mental',
+      img: './img/promos/promo-zen.jpg',
+      incluye: ['30 Cápsulas de Ashwagandha', 'Triple extracto Reishi (30ml)', 'Triple extracto Melena de León (30ml)'],
+      precio: 34990, precioRef: 41970
+    },
+    {
+      id: 'vigorosidad',
+      nombre: 'Promo Vigorosidad',
+      tag: 'Enciende tu potencia y energía vital',
+      img: './img/promos/promo-vigorosidad.jpg',
+      incluye: ['30 Cápsulas de Ashwagandha', '30 Cápsulas de Maca negra', 'Triple extracto Cordyceps (30ml)'],
+      precio: 29990, precioRef: 38970
+    },
+    {
+      id: 'cuarteto',
+      nombre: 'Cuarteto Fungi',
+      tag: '4 hongos, un solo poder',
+      img: './img/promos/promo-cuarteto-fungi.jpg',
+      incluye: ['30 Cáps Melena de León', '30 Cáps Cordyceps', '30 Cáps Esporas de Reishi', '30 Cáps Cola de Pavo'],
+      precio: 29990, precioRef: 42970
+    },
+    {
+      id: 'sinergia',
+      nombre: 'Sinergia Ayurveda',
+      tag: 'Depura, equilibra y vitaliza tu cuerpo',
+      img: './img/promos/promo-sinergia.jpg',
+      incluye: ['30 Cáps Ashwagandha', '30 Cáps Shatavari', '30 Cáps Triphala', '30 Cáps Neem', '30 Cáps Maca'],
+      precio: 47990, precioRef: 59950
+    },
+    {
+      id: 'elixir',
+      nombre: 'Elixir de la Juventud',
+      tag: 'Inmunidad + sistema nervioso + belleza',
+      img: './img/promos/promo-elixir-juventud.jpg',
+      incluye: ['Triple extracto de Reishi (30ml)', '30 Cáps esporas de Reishi', 'Crema absorción medicinal de Reishi'],
+      precio: 29990, precioRef: 44980
+    },
+    {
+      id: 'potencia',
+      nombre: 'Potencia Tu Pack',
+      tag: 'La ciencia regenerando tu belleza',
+      img: './img/promos/promo-potencia-tupack.jpg',
+      incluye: ['Crema nocturna de Reishi (30ml)', 'Crema diurna de Tremella (30ml)', 'Shampoo natural con Neem (150ml)'],
+      precio: 23970, precioRef: 34970
+    },
+    {
+      id: 'fantasticos',
+      nombre: 'Los 4 Fantásticos',
+      tag: 'Separados increíbles, juntos invencibles',
+      img: './img/promos/promo-4-fantasticos.jpg',
+      incluye: ['Triple extracto Melena de León', 'Triple extracto Cordyceps', 'Triple extracto Esporas de Reishi', 'Triple extracto Cola de Pavo', '(30ml c/u)'],
+      precio: 49990, precioRef: 64950
+    },
+    {
+      id: 'sexteto',
+      nombre: 'Sexteto Fungi',
+      tag: 'El poder de todo el micelio',
+      img: './img/promos/promo-sexteto-fungi.jpg',
+      incluye: ['30 Cáps Melena de León', '30 Cáps Cordyceps', '30 Cáps Esporas de Reishi', '30 Cáps Cola de Pavo', '30 Cáps Shiitake', '30 Cáps Hongo del Sol'],
+      precio: 49990, precioRef: 64950
+    }
+  ];
+
+  // ─────────────────────────────────────────────
+  // ESTADO
+  // ─────────────────────────────────────────────
+  let allProducts    = [];
+  let activeCategory = 'Todos';
+  let searchQuery    = '';
+  let sortMode       = 'default';
+  const cart         = new Map(); // id → { product, qty }
+  const WA_NUMBER    = '56947857304'; // Número real Gran Espíritu
+
+  // ─────────────────────────────────────────────
+  // CARGA DE DATOS
+  // ─────────────────────────────────────────────
+  async function fetchData() {
+    try {
+      // FASE 1 (MVP): datos embebidos arriba
+      // FASE 2: const res = await fetch('./productos.json')
+      await new Promise(r => setTimeout(r, 600)); // simular carga
+      allProducts = PRODUCTS_DATA;
+      document.getElementById('skeleton-grid').style.display = 'none';
+      document.getElementById('products-grid').style.display = 'grid';
+      renderProducts();
+    } catch (err) {
+      console.error('fetchData:', err);
+      document.getElementById('skeleton-grid').innerHTML =
+        '<p style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-subtle);font-size:13px;">Error al cargar productos. Recarga la página.</p>';
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // FILTRADO + ORDENAMIENTO
+  // ─────────────────────────────────────────────
+  function getFiltered() {
+    let list = allProducts.filter(p => {
+      const matchCat    = activeCategory === 'Todos' || p.categoria === activeCategory;
+      const matchSearch = p.nombre.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          p.beneficio.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          p.descripcion.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCat && matchSearch;
+    });
+
+    switch (sortMode) {
+      case 'price-asc':  list.sort((a, b) => a.precio - b.precio); break;
+      case 'price-desc': list.sort((a, b) => b.precio - a.precio); break;
+      case 'discount':
+        list.sort((a, b) => {
+          const da = a.precioNormal ? (1 - a.precio / a.precioNormal) : 0;
+          const db = b.precioNormal ? (1 - b.precio / b.precioNormal) : 0;
+          return db - da;
+        });
+        break;
+    }
+    return list;
+  }
+
+  function formatCLP(n) { return '$' + Math.round(n).toLocaleString('es-CL'); }
+  function getDiscountPct(p) {
+    if (!p.precioNormal) return 0;
+    return Math.round((1 - p.precio / p.precioNormal) * 100);
+  }
+
+  // ─────────────────────────────────────────────
+  // RENDER CATÁLOGO
+  // ─────────────────────────────────────────────
+  function renderProducts() {
+    const filtered = getFiltered();
+    const grid  = document.getElementById('products-grid');
+    const empty = document.getElementById('empty-state');
+
+    document.getElementById('result-count').textContent =
+      `${filtered.length} producto${filtered.length !== 1 ? 's' : ''}`;
+    document.getElementById('section-title').textContent =
+      activeCategory === 'Todos' ? 'Catálogo Completo' : activeCategory;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      empty.classList.add('show');
+      return;
+    }
+    empty.classList.remove('show');
+
+    grid.innerHTML = filtered.map((p, i) => {
+      const pct    = getDiscountPct(p);
+      const inCart = cart.has(p.id);
+      const qty    = inCart ? cart.get(p.id).qty : 0;
+      const pocas  = p.unidadesRestantes != null && p.unidadesRestantes > 0 && p.unidadesRestantes <= 5;
+
+      return `
+      <div class="product-card fade-up ${!p.stock ? 'agotado' : ''}" style="animation-delay:${i*0.05}s">
+        <div class="card-img-wrap">
+          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy"
+               onerror="this.src='https://placehold.co/400x400/ece6dc/9e8e7c?text=🍄'" />
+          ${p.promo ? `<div class="badge-promo">${p.promo}</div>` : (pct > 0 ? `<div class="badge-promo">-${pct}%</div>` : '')}
+          <div class="badge-stock ${p.stock ? 'in' : 'out'}">${p.stock ? '✓ Stock' : 'Agotado'}</div>
+          ${pocas ? `<div class="badge-ultimas">⚠ Últimas ${p.unidadesRestantes} unidades</div>` : ''}
+        </div>
+        <div class="card-body">
+          <span class="card-benefit">${p.beneficio}</span>
+          <h3 class="card-name">${p.nombre}</h3>
+          <p class="card-desc">${p.descripcion}</p>
+          <div class="card-price-wrap">
+            ${p.precioNormal ? `<div class="price-old">${formatCLP(p.precioNormal)}</div>` : ''}
+            <div class="price-row">
+              <span class="price-main">${formatCLP(p.precio)}</span>
+              ${pct > 0 ? `<span class="price-pct">−${pct}%</span>` : ''}
+            </div>
+            <div class="price-unit">${p.precioUnidad}</div>
+          </div>
+          <div class="card-ctrl" id="ctrl-${p.id}">
+            ${renderCardControl(p, inCart, qty)}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderCardControl(p, inCart, qty) {
+    if (!p.stock) {
+      return `<button disabled class="btn-add">Sin stock</button>`;
+    }
+    if (!inCart || qty === 0) {
+      return `<button onclick="addToCart(${p.id})" class="btn-add">+ Agregar al pedido</button>`;
+    }
+    return `
+      <div class="qty-stepper">
+        <button onclick="changeQty(${p.id}, -1)" class="qty-btn">−</button>
+        <span class="qty-num">${qty}</span>
+        <button onclick="changeQty(${p.id}, 1)" class="qty-btn">+</button>
+      </div>`;
+  }
+
+  // ─────────────────────────────────────────────
+  // CARRITO
+  // ─────────────────────────────────────────────
+  function addToCart(id) {
+    const p = allProducts.find(x => x.id === id);
+    if (!p) return;
+    if (cart.has(id)) { cart.get(id).qty++; }
+    else               { cart.set(id, { product: p, qty: 1 }); }
+    refreshCardControl(id);
+    updateCartUI();
+    showToast(`🍄 ${p.nombre} agregado`);
+    shakeCartIcon();
+  }
+
+  function changeQty(id, delta) {
+    if (!cart.has(id)) return;
+    const item = cart.get(id);
+    item.qty += delta;
+    if (item.qty <= 0) cart.delete(id);
+    refreshCardControl(id);
+    updateCartUI();
+    if (delta > 0) shakeCartIcon();
+  }
+
+  function refreshCardControl(id) {
+    const ctrl  = document.getElementById(`ctrl-${id}`);
+    if (!ctrl) return;
+    const p     = allProducts.find(x => x.id === id);
+    const inCart = cart.has(id);
+    const qty   = inCart ? cart.get(id).qty : 0;
+    ctrl.innerHTML = renderCardControl(p, inCart, qty);
+  }
+
+  function getCartTotal() {
+    let total = 0;
+    cart.forEach(item => { total += item.product.precio * item.qty; });
+    return total;
+  }
+  function getCartCount() {
+    let count = 0;
+    cart.forEach(item => { count += item.qty; });
+    return count;
+  }
+
+  function updateCartUI() {
+    const count = getCartCount();
+    const total = getCartTotal();
+
+    // Badge header
+    const badge = document.getElementById('cart-badge');
+    if (count > 0) {
+      badge.textContent = count;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+
+    // FAB
+    const waFab   = document.getElementById('wa-fab');
+    const cartFab = document.getElementById('cart-fab');
+    if (count > 0) {
+      waFab.style.display   = 'none';
+      cartFab.style.display = 'flex';
+      document.getElementById('fab-count').textContent = count;
+    } else {
+      waFab.style.display   = '';
+      cartFab.style.display = 'none';
+    }
+
+    // Drawer
+    const itemsEl  = document.getElementById('cart-items');
+    const emptyEl  = document.getElementById('cart-empty');
+    const footerEl = document.getElementById('cart-footer');
+
+    if (count > 0) {
+      emptyEl.style.display  = 'none';
+      itemsEl.style.display  = 'flex';
+      footerEl.classList.add('visible');
+
+      // Renderizar items
+      let html = '';
+      cart.forEach(({ product: p, qty }) => {
+        html += `
+          <div class="cart-item">
+            <img class="cart-item-img" src="${p.imagen}" alt="${p.nombre}"
+                 onerror="this.src='https://placehold.co/100x100/ece6dc/9e8e7c?text=🍄'" />
+            <div class="cart-item-info">
+              <div class="cart-item-name">${p.nombre}</div>
+              <div class="cart-item-price">${formatCLP(p.precio * qty)}</div>
+              <div class="cart-item-stepper">
+                <button class="item-qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+                <span class="item-qty-num">${qty}</span>
+                <button class="item-qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
+              </div>
+            </div>
+          </div>`;
+      });
+      itemsEl.innerHTML = html;
+
+      document.getElementById('subtotal-display').textContent = formatCLP(total);
+      document.getElementById('total-display').textContent    = formatCLP(total);
+      document.getElementById('drawer-count').textContent     = `${count} producto${count !== 1 ? 's' : ''}`;
+    } else {
+      emptyEl.style.display   = 'flex';
+      itemsEl.style.display   = 'none';
+      footerEl.classList.remove('visible');
+      itemsEl.innerHTML       = '';
+      document.getElementById('drawer-count').textContent = '0 productos';
+    }
+  }
+
+  function shakeCartIcon() {
+    const btn = document.getElementById('cart-toggle-btn');
+    btn.classList.remove('cart-shake');
+    void btn.offsetWidth; // reflow
+    btn.classList.add('cart-shake');
+    btn.addEventListener('animationend', () => btn.classList.remove('cart-shake'), { once: true });
+  }
+
+  function openCart()  {
+    document.getElementById('cart-drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart() {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ─────────────────────────────────────────────
+  // TOAST
+  // ─────────────────────────────────────────────
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  // ─────────────────────────────────────────────
+  // BÚSQUEDA + FILTROS
+  // ─────────────────────────────────────────────
+  function filterCat(cat) {
+    activeCategory = cat;
+    document.querySelectorAll('.cat-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === cat);
+    });
+    renderProducts();
+    document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetSearch() {
+    searchQuery    = '';
+    activeCategory = 'Todos';
+    document.getElementById('search-input').value = '';
+    document.querySelectorAll('.cat-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === 'Todos');
+    });
+    renderProducts();
+  }
+
+  // ─────────────────────────────────────────────
+  // PROMOCIONES — render carrusel + sección
+  // ─────────────────────────────────────────────
+  const WA_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.86L.057 23.75a.5.5 0 00.609.61l5.975-1.566A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/></svg>`;
+
+  function savePct(p) {
+    if (!p.precioRef) return 0;
+    return Math.round((1 - p.precio / p.precioRef) * 100);
+  }
+
+  function renderPromos() {
+    // 1) Carrusel hero — imágenes completas (la 1ª carga eager para mejorar LCP)
+    document.getElementById('hero-track').innerHTML = PROMOS_DATA.map((p, i) => `
+      <div class="promo-slide">
+        <img src="${p.img}" alt="${p.nombre} — ${p.tag}"
+             loading="${i === 0 ? 'eager' : 'lazy'}" ${i === 0 ? 'fetchpriority="high"' : ''}
+             onerror="this.src='https://placehold.co/600x600/ece6dc/9e8e7c?text=${encodeURIComponent(p.nombre)}'" />
+      </div>`).join('');
+
+    // 2) Dots dinámicos
+    document.getElementById('hero-dots').innerHTML = PROMOS_DATA.map((_, i) =>
+      `<span class="hdot${i === 0 ? ' active' : ''}"></span>`).join('');
+
+    // 3) Sección de cards
+    document.getElementById('promos-scroll').innerHTML = PROMOS_DATA.map(p => {
+      const pct = savePct(p);
+      return `
+      <article class="promo-card">
+        <div class="promo-card-img">
+          <img src="${p.img}" alt="${p.nombre}" loading="lazy"
+               onerror="this.src='https://placehold.co/600x600/ece6dc/9e8e7c?text=${encodeURIComponent(p.nombre)}'" />
+          ${pct > 0 ? `<div class="promo-card-save">Ahorra ${pct}%</div>` : ''}
+        </div>
+        <div class="promo-card-body">
+          <div class="promo-card-name">${p.nombre}</div>
+          <div class="promo-card-tag">${p.tag}</div>
+          <div class="promo-card-price">
+            <span class="promo-price-now">${formatCLP(p.precio)}</span>
+            ${p.precioRef ? `<span class="promo-price-ref">${formatCLP(p.precioRef)}</span>` : ''}
+          </div>
+          <button class="promo-card-btn" onclick="pedirPromo('${p.id}')">
+            ${WA_ICON} Pedir este pack
+          </button>
+        </div>
+      </article>`;
+    }).join('');
+
+    // 4) Contador
+    document.getElementById('promos-count').textContent = `${PROMOS_DATA.length} packs`;
+  }
+
+  function pedirPromo(id) {
+    const promo = PROMOS_DATA.find(p => p.id === id);
+    if (!promo) return;
+    let msg = `Hola Gran Espíritu 🍄, me interesa la *${promo.nombre}* (${formatCLP(promo.precio)}):\n\n`;
+    promo.incluye.forEach(i => { msg += `• ${i}\n`; });
+    msg += `\n¿Me confirman disponibilidad? 🌱`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ─────────────────────────────────────────────
+  // HERO CARRUSEL
+  // ─────────────────────────────────────────────
+  let heroIndex = 0;
+  let TOTAL_SLIDES = PROMOS_DATA.length;
+  let heroAuto;
+
+  function heroGoTo(i) {
+    heroIndex = (i + TOTAL_SLIDES) % TOTAL_SLIDES;
+    document.getElementById('hero-track').style.transform = `translateX(-${heroIndex * 100}%)`;
+    document.querySelectorAll('.hdot').forEach((d, idx) => {
+      d.classList.toggle('active', idx === heroIndex);
+    });
+  }
+
+  function startHeroAuto() {
+    heroAuto = setInterval(() => heroGoTo(heroIndex + 1), 4500);
+  }
+
+  document.getElementById('hero-prev').addEventListener('click', () => {
+    clearInterval(heroAuto);
+    heroGoTo(heroIndex - 1);
+    startHeroAuto();
+  });
+  document.getElementById('hero-next').addEventListener('click', () => {
+    clearInterval(heroAuto);
+    heroGoTo(heroIndex + 1);
+    startHeroAuto();
+  });
+
+  // Touch swipe hero
+  let touchStartX = 0;
+  const heroEl = document.getElementById('hero');
+  heroEl.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  heroEl.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      clearInterval(heroAuto);
+      heroGoTo(dx < 0 ? heroIndex + 1 : heroIndex - 1);
+      startHeroAuto();
+    }
+  });
+
+  // ─────────────────────────────────────────────
+  // MODAL PAGO
+  // ─────────────────────────────────────────────
+  function openPay() {
+    if (cart.size === 0) return;
+    closeCart();
+    const total = getCartTotal();
+
+    // Rellenar resumen
+    let itemsHtml = '';
+    cart.forEach(({ product: p, qty }) => {
+      itemsHtml += `
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-muted);">${qty}× ${p.nombre}</span>
+          <span style="font-weight:700;color:var(--text);">${formatCLP(p.precio * qty)}</span>
+        </div>`;
+    });
+    document.getElementById('pay-items-list').innerHTML = itemsHtml;
+    document.getElementById('pay-subtotal').textContent = formatCLP(total);
+    document.getElementById('pay-total').textContent    = formatCLP(total);
+
+    showPayStep('pay-step-1');
+    document.getElementById('pay-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePay() {
+    document.getElementById('pay-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function showPayStep(id) {
+    document.querySelectorAll('.pay-step').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function goPayStep2() {
+    const method = document.querySelector('input[name="pay-method"]:checked');
+    if (!method) { showToast('⚠️ Selecciona un método de pago'); return; }
+    const total = getCartTotal();
+
+    if (method.value === 'transfer') {
+      document.getElementById('transfer-amount').textContent = formatCLP(total);
+      showPayStep('pay-step-transfer');
+    } else if (method.value === 'cash') {
+      document.getElementById('cash-amount').textContent = formatCLP(total);
+      showPayStep('pay-step-cash');
+    } else if (method.value === 'webpay') {
+      document.getElementById('wp-total-display').textContent = formatCLP(total);
+      document.getElementById('wp-btn-total').textContent     = formatCLP(total);
+      showPayStep('pay-step-webpay');
+    }
+  }
+
+  function backToPayStep1() { showPayStep('pay-step-1'); }
+
+  function genOrderNum() {
+    return '#GE-' + Math.random().toString(36).slice(2).toUpperCase().padEnd(4, '0').slice(0, 4);
+  }
+
+  function finishOrder(methodLabel) {
+    document.getElementById('pay-order-number').textContent = genOrderNum();
+    document.getElementById('pay-method-label').textContent = methodLabel;
+    showPayStep('pay-step-success');
+  }
+
+  function confirmTransfer() { finishOrder('Transferencia bancaria'); }
+
+  function confirmCash() { finishOrder('Efectivo al entregar'); }
+
+  function processWebpay() {
+    const num  = document.getElementById('wp-card-number').value.replace(/\s/g,'');
+    const name = document.getElementById('wp-card-name').value.trim();
+    const exp  = document.getElementById('wp-expiry').value;
+    const cvv  = document.getElementById('wp-cvv').value;
+    if (num.length < 16 || !name || exp.length < 5 || cvv.length < 3) {
+      showToast('⚠️ Completa todos los datos de la tarjeta');
+      return;
+    }
+    showPayStep('pay-step-processing');
+    setTimeout(() => finishOrder('Webpay Plus'), 2800);
+  }
+
+  function sendSuccessWhatsApp() {
+    let msg = `Hola Gran Espíritu 🍄, acabo de confirmar mi pedido:\n\n`;
+    cart.forEach(({ product: p, qty }) => {
+      msg += `• ${qty}x ${p.nombre} (${formatCLP(p.precio * qty)})\n`;
+    });
+    msg += `\n*Total: ${formatCLP(getCartTotal())}*\n\nN° pedido: ${document.getElementById('pay-order-number').textContent}`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  function resetCart() {
+    cart.clear();
+    updateCartUI();
+    renderProducts();
+  }
+
+  // ─────────────────────────────────────────────
+  // WHATSAPP DIRECTO (desde carrito)
+  // ─────────────────────────────────────────────
+  function sendOrderWhatsApp() {
+    if (cart.size === 0) return;
+    let msg = `Hola Gran Espíritu 🍄, me gustaría realizar el siguiente pedido:\n\n`;
+    cart.forEach(({ product: p, qty }) => {
+      msg += `▪️ ${qty}x ${p.nombre} (${formatCLP(p.precio * qty)})\n`;
+    });
+    const note = document.getElementById('order-note').value.trim();
+    msg += `\n*Total estimado: ${formatCLP(getCartTotal())}*`;
+    if (note) msg += `\n\n📝 Nota: ${note}`;
+    msg += `\n\n¿Me confirman disponibilidad? ¡Gracias! 🌱`;
+    closeCart();
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ─────────────────────────────────────────────
+  // FORMATEO DE INPUTS PAGO
+  // ─────────────────────────────────────────────
+  function formatCardNumber(el) {
+    let v = el.value.replace(/\D/g, '').slice(0,16);
+    el.value = v.replace(/(.{4})/g, '$1 ').trim();
+  }
+  function formatExpiry(el) {
+    let v = el.value.replace(/\D/g, '');
+    if (v.length >= 2) v = v.slice(0,2) + '/' + v.slice(2,4);
+    el.value = v;
+  }
+
+  // ─────────────────────────────────────────────
+  // EVENT LISTENERS
+  // ─────────────────────────────────────────────
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery = e.target.value;
+    renderProducts();
+  });
+
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => filterCat(btn.dataset.cat));
+  });
+
+  document.getElementById('sort-select').addEventListener('change', e => {
+    sortMode = e.target.value;
+    renderProducts();
+  });
+
+  // ─────────────────────────────────────────────
+  // INIT
+  // ─────────────────────────────────────────────
+  renderPromos();
+  fetchData();
+  startHeroAuto();
+  updateCartUI();
+</script>
+
+</body>
+</html>
