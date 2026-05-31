@@ -118,12 +118,17 @@
 
     /* Logo icon */
     .logo-mark {
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       border-radius: var(--r-md);
+      overflow: hidden;
       background: var(--pop);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       font-size: 20px;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     .logo-text { flex: 1; line-height: 1.1; }
@@ -133,6 +138,9 @@
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.02em;
+    }
+    .logo-text-main .logo-tu {
+      color: var(--pop);
     }
     .logo-text-sub {
       font-size: 11px;
@@ -1271,10 +1279,12 @@
   <!-- ═════ HEADER ═════ -->
   <header id="site-header">
     <div class="header-top">
-      <div class="logo-mark">🍄</div>
+      <div class="logo-mark">
+        <img src="./fotos/logo.png" alt="Gran Espíritu logo" />
+      </div>
       <div class="logo-text">
-        <div class="logo-text-main">Gran Espíritu</div>
-        <div class="logo-text-sub">Medicina Fungi Natural</div>
+        <div class="logo-text-main">granespíri<span class="logo-tu">TU</span></div>
+        <div class="logo-text-sub">Súper Adaptógenos del planeta tierra.</div>
       </div>
       <button id="cart-toggle-btn" onclick="openCart()" aria-label="Ver carrito">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -1296,11 +1306,7 @@
     <div class="cats-wrap">
       <button class="cat-btn active" data-cat="Todos">Todos</button>
       <button class="cat-btn" data-cat="Hongos">🍄 Hongos</button>
-      <button class="cat-btn" data-cat="Energía">⚡ Energía</button>
-      <button class="cat-btn" data-cat="Foco">🧠 Foco</button>
-      <button class="cat-btn" data-cat="Calma">🌿 Calma</button>
-      <button class="cat-btn" data-cat="Inmunidad">🛡 Inmunidad</button>
-      <button class="cat-btn" data-cat="Adaptógenos">🌱 Adaptógenos</button>
+      <button class="cat-btn" data-cat="Plantas Adaptógenas">🌱 Plantas Adaptógenas</button>
       <button class="cat-btn" data-cat="Cuidado">✨ Cuidado</button>
     </div>
   </header>
@@ -1349,29 +1355,13 @@
 
   <!-- ═════ CATEGORÍA HUB ═════ -->
   <div class="cat-hub" style="grid-template-columns:repeat(4,1fr);">
-    <button class="cat-hub-btn" onclick="filterCat('Foco')">
-      <div class="cat-hub-icon" style="background:#e8f0e8;">🧠</div>
-      <span class="cat-hub-label">Foco &<br/>Memoria</span>
-    </button>
-    <button class="cat-hub-btn" onclick="filterCat('Energía')">
-      <div class="cat-hub-icon" style="background:#fef3e2;">⚡</div>
-      <span class="cat-hub-label">Energía &<br/>Vigor</span>
-    </button>
-    <button class="cat-hub-btn" onclick="filterCat('Calma')">
-      <div class="cat-hub-icon" style="background:#e8ede8;">🌿</div>
-      <span class="cat-hub-label">Calma &<br/>Sueño</span>
-    </button>
-    <button class="cat-hub-btn" onclick="filterCat('Inmunidad')">
-      <div class="cat-hub-icon" style="background:#ede8f0;">🛡</div>
-      <span class="cat-hub-label">Inmunidad</span>
-    </button>
     <button class="cat-hub-btn" onclick="filterCat('Hongos')">
       <div class="cat-hub-icon" style="background:#f0ece4;">🍄</div>
       <span class="cat-hub-label">Hongos<br/>Medicinales</span>
     </button>
-    <button class="cat-hub-btn" onclick="filterCat('Adaptógenos')">
+    <button class="cat-hub-btn" onclick="filterCat('Plantas Adaptógenas')">
       <div class="cat-hub-icon" style="background:#e4ede8;">🌱</div>
-      <span class="cat-hub-label">Adaptógenos<br/>Ayurvédicos</span>
+      <span class="cat-hub-label">Plantas<br/>Adaptógenas</span>
     </button>
     <button class="cat-hub-btn" onclick="filterCat('Cuidado')">
       <div class="cat-hub-icon" style="background:#f5eef0;">✨</div>
@@ -1801,14 +1791,15 @@
   // ─────────────────────────────────────────────
   const PRODUCTS_DATA = [
     // ── LÍNEA HONGOS MEDICINALES ────────────────────────────────────
+    // Orden: Melena de León, Cordyceps, Reishi, Cola de Pavo, Shiitake, Hongo del Sol
     {
       id: 1,
-      nombre: "Melena de León · Tintura",
+      nombre: "Melena de León · Triple extracto",
       nombreCientifico: "Hericium erinaceus",
-      categoria: "Foco",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
       beneficio: "Neuroprotección & Foco",
-      descripcion: "Tintura de extracto doble. Mejora la memoria, concentración y salud del sistema nervioso. Promueve NGF.",
+      descripcion: "Triple extracto de Melena de León. Mejora la memoria, concentración y salud del sistema nervioso. Promueve NGF.",
       precio: 14990,
       precioNormal: 18990,
       precioUnidad: "30ml · Extracto 1:3",
@@ -1818,65 +1809,17 @@
       unidadesRestantes: null
     },
     {
-      id: 2,
-      nombre: "Reishi · Cápsulas",
-      nombreCientifico: "Ganoderma lucidum",
-      categoria: "Calma",
+      id: 12,
+      nombre: "Melena de León · Cápsulas",
+      nombreCientifico: "Hericium erinaceus",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
-      beneficio: "Equilibrio & Calma",
-      descripcion: "Cápsulas de Reishi. El «Hongo de la Inmortalidad». Reduce el estrés, mejora el sueño y fortalece defensas.",
+      beneficio: "Neuroprotección & Memoria",
+      descripcion: "Cápsulas de Melena de León. Estimula la producción de NGF para neuroplasticidad y concentración sostenida.",
       precio: 16990,
       precioNormal: null,
       precioUnidad: "30 cápsulas · 500mg c/u",
-      imagen: "./img/hero-bosque2.jpg",
-      stock: true,
-      promo: null,
-      unidadesRestantes: null
-    },
-    {
-      id: 3,
-      nombre: "Reishi · Tintura",
-      nombreCientifico: "Ganoderma lucidum",
-      categoria: "Calma",
-      marca: "Gran Espíritu",
-      beneficio: "Equilibrio & Calma",
-      descripcion: "Tintura líquida de Reishi. Absorción rápida. Ideal para quienes buscan calma profunda y soporte inmune.",
-      precio: 14990,
-      precioNormal: null,
-      precioUnidad: "30ml · Extracto 1:3",
-      imagen: "./img/hero-bosque3.jpg",
-      stock: true,
-      promo: null,
-      unidadesRestantes: null
-    },
-    {
-      id: 4,
-      nombre: "Cola de Pavo · Cápsulas",
-      nombreCientifico: "Trametes versicolor",
-      categoria: "Inmunidad",
-      marca: "Gran Espíritu",
-      beneficio: "Defensas & Microbiota",
-      descripcion: "Cápsulas de Cola de Pavo. Contiene PSK y PSP, polisacáridos que potencian la inmunidad y la microbiota.",
-      precio: 15990,
-      precioNormal: null,
-      precioUnidad: "30 cápsulas · 500mg c/u",
-      imagen: "./img/turkey-tail.jpg",
-      stock: true,
-      promo: null,
-      unidadesRestantes: null
-    },
-    {
-      id: 5,
-      nombre: "Cola de Pavo · Tintura",
-      nombreCientifico: "Trametes versicolor",
-      categoria: "Inmunidad",
-      marca: "Gran Espíritu",
-      beneficio: "Defensas & Microbiota",
-      descripcion: "Tintura de Cola de Pavo de absorción directa. Potente soporte para el sistema inmune y la flora intestinal.",
-      precio: 13990,
-      precioNormal: null,
-      precioUnidad: "30ml · Extracto 1:3",
-      imagen: "./img/combo-trio.jpg",
+      imagen: "./img/ambient3.jpg",
       stock: true,
       promo: null,
       unidadesRestantes: null
@@ -1885,7 +1828,7 @@
       id: 6,
       nombre: "Cordyceps · Cápsulas",
       nombreCientifico: "Cordyceps militaris",
-      categoria: "Energía",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
       beneficio: "Energía & Rendimiento",
       descripcion: "Cápsulas de Cordyceps. Aumenta resistencia física, optimiza ATP celular y mejora capacidad respiratoria.",
@@ -1899,12 +1842,12 @@
     },
     {
       id: 7,
-      nombre: "Cordyceps · Tintura",
+      nombre: "Cordyceps · Triple extracto",
       nombreCientifico: "Cordyceps militaris",
-      categoria: "Energía",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
       beneficio: "Energía & ATP",
-      descripcion: "Tintura de Cordyceps de rápida absorción. Ideal pre-entreno o para mejorar el rendimiento durante el día.",
+      descripcion: "Triple extracto de Cordyceps de rápida absorción. Ideal pre-entreno o para mejorar el rendimiento durante el día.",
       precio: 14990,
       precioNormal: 17990,
       precioUnidad: "30ml · Extracto 1:3",
@@ -1914,17 +1857,65 @@
       unidadesRestantes: null
     },
     {
-      id: 8,
-      nombre: "Hongo del Sol · Tintura",
-      nombreCientifico: "Agaricus blazei",
-      categoria: "Inmunidad",
+      id: 2,
+      nombre: "Reishi · Cápsulas",
+      nombreCientifico: "Ganoderma lucidum",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
-      beneficio: "Antiviral & Inmunomodulador",
-      descripcion: "Tintura de Hongo del Sol. Potente inmunomodulador, antiviral y antifúngico natural. Apoya defensas celulares.",
+      beneficio: "Equilibrio & Calma",
+      descripcion: "Cápsulas de Reishi. El «Hongo de la Inmortalidad». Reduce el estrés, mejora el sueño y fortalece defensas.",
+      precio: 16990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/hero-bosque2.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 3,
+      nombre: "Reishi · Triple extracto",
+      nombreCientifico: "Ganoderma lucidum",
+      categoria: "Hongos",
+      marca: "Gran Espíritu",
+      beneficio: "Equilibrio & Calma",
+      descripcion: "Triple extracto líquido de Reishi. Absorción rápida. Ideal para quienes buscan calma profunda y soporte inmune.",
+      precio: 14990,
+      precioNormal: null,
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/hero-bosque3.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 4,
+      nombre: "Cola de Pavo · Cápsulas",
+      nombreCientifico: "Trametes versicolor",
+      categoria: "Hongos",
+      marca: "Gran Espíritu",
+      beneficio: "Defensas & Microbiota",
+      descripcion: "Cápsulas de Cola de Pavo. Contiene PSK y PSP, polisacáridos que potencian la inmunidad y la microbiota.",
+      precio: 15990,
+      precioNormal: null,
+      precioUnidad: "30 cápsulas · 500mg c/u",
+      imagen: "./img/turkey-tail.jpg",
+      stock: true,
+      promo: null,
+      unidadesRestantes: null
+    },
+    {
+      id: 5,
+      nombre: "Cola de Pavo · Triple extracto",
+      nombreCientifico: "Trametes versicolor",
+      categoria: "Hongos",
+      marca: "Gran Espíritu",
+      beneficio: "Defensas & Microbiota",
+      descripcion: "Triple extracto de Cola de Pavo de absorción directa. Potente soporte para el sistema inmune y la flora intestinal.",
       precio: 13990,
       precioNormal: null,
       precioUnidad: "30ml · Extracto 1:3",
-      imagen: "./img/chaga.jpg",
+      imagen: "./img/combo-trio.jpg",
       stock: true,
       promo: null,
       unidadesRestantes: null
@@ -1947,12 +1938,12 @@
     },
     {
       id: 10,
-      nombre: "Shiitake · Tintura",
+      nombre: "Shiitake · Triple extracto",
       nombreCientifico: "Lentinula edodes",
       categoria: "Hongos",
       marca: "Gran Espíritu",
       beneficio: "Nutrición & Defensas",
-      descripcion: "Tintura de Shiitake de extracto puro. Absorción directa. Apoya la salud cardiovascular e inmune.",
+      descripcion: "Triple extracto de Shiitake puro. Absorción directa. Apoya la salud cardiovascular e inmune.",
       precio: 12990,
       precioNormal: null,
       precioUnidad: "30ml · Extracto 1:3",
@@ -1965,7 +1956,7 @@
       id: 11,
       nombre: "Hongo del Sol · Cápsulas",
       nombreCientifico: "Agaricus blazei",
-      categoria: "Inmunidad",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
       beneficio: "Inmunomodulador",
       descripcion: "Cápsulas de Hongo del Sol. Contiene beta-glucanos de alta potencia. Refuerza el sistema inmune a nivel profundo.",
@@ -1978,27 +1969,27 @@
       unidadesRestantes: 5
     },
     {
-      id: 12,
-      nombre: "Melena de León · Cápsulas",
-      nombreCientifico: "Hericium erinaceus",
-      categoria: "Foco",
+      id: 8,
+      nombre: "Hongo del Sol · Triple extracto",
+      nombreCientifico: "Agaricus blazei",
+      categoria: "Hongos",
       marca: "Gran Espíritu",
-      beneficio: "Neuroprotección & Memoria",
-      descripcion: "Cápsulas de Melena de León. Estimula la producción de NGF para neuroplasticidad y concentración sostenida.",
-      precio: 16990,
+      beneficio: "Antiviral & Inmunomodulador",
+      descripcion: "Triple extracto de Hongo del Sol. Potente inmunomodulador, antiviral y antifúngico natural. Apoya defensas celulares.",
+      precio: 13990,
       precioNormal: null,
-      precioUnidad: "30 cápsulas · 500mg c/u",
-      imagen: "./img/ambient3.jpg",
+      precioUnidad: "30ml · Extracto 1:3",
+      imagen: "./img/chaga.jpg",
       stock: true,
       promo: null,
       unidadesRestantes: null
     },
-    // ── LÍNEA ADAPTÓGENOS AYURVÉDICOS ──────────────────────────────
+    // ── LÍNEA PLANTAS ADAPTÓGENAS ───────────────────────────────────
     {
       id: 13,
       nombre: "Maca · Cápsulas",
       nombreCientifico: "Lepidium meyenii",
-      categoria: "Adaptógenos",
+      categoria: "Plantas Adaptógenas",
       marca: "Gran Espíritu",
       beneficio: "Energía & Vitalidad",
       descripcion: "Maca andina en cápsulas. Regula el sistema hormonal, aumenta energía y vitalidad. Adaptógeno ancestral peruano.",
@@ -2014,7 +2005,7 @@
       id: 14,
       nombre: "Ashwagandha · Cápsulas",
       nombreCientifico: "Withania somnifera",
-      categoria: "Adaptógenos",
+      categoria: "Plantas Adaptógenas",
       marca: "Gran Espíritu",
       beneficio: "Calma, Energía & Foco",
       descripcion: "Ashwagandha (KSM-66). Reduce el cortisol, mejora el foco, aumenta energía y promueve sueño reparador.",
@@ -2030,7 +2021,7 @@
       id: 15,
       nombre: "Neem · Cápsulas",
       nombreCientifico: "Azadirachta indica",
-      categoria: "Adaptógenos",
+      categoria: "Plantas Adaptógenas",
       marca: "Gran Espíritu",
       beneficio: "Limpieza & Defensas",
       descripcion: "Neem en cápsulas. Depurativo natural, antifúngico, antibacteriano. Apoya la salud de la piel y cuerpo.",
@@ -2046,7 +2037,7 @@
       id: 16,
       nombre: "Shatavari · Cápsulas",
       nombreCientifico: "Asparagus racemosus",
-      categoria: "Adaptógenos",
+      categoria: "Plantas Adaptógenas",
       marca: "Gran Espíritu",
       beneficio: "Salud Femenina & Vitalidad",
       descripcion: "Shatavari en cápsulas. El tónico femenino del Ayurveda. Equilibra hormonas, nutre y da vitalidad profunda.",
@@ -2062,7 +2053,7 @@
       id: 17,
       nombre: "Triphala · Cápsulas",
       nombreCientifico: "Emblica + Terminalia spp.",
-      categoria: "Adaptógenos",
+      categoria: "Plantas Adaptógenas",
       marca: "Gran Espíritu",
       beneficio: "Digestión & Depuración",
       descripcion: "Triphala, la fórmula ayurvédica de 3 frutas sagradas. Depura, regula intestino y protege el organismo.",
@@ -2090,6 +2081,22 @@
       stock: true,
       promo: "-20%",
       unidadesRestantes: 3
+    },
+    {
+      id: 19,
+      nombre: "Pack Potencia Tu Cuidado",
+      nombreCientifico: "Shampoo + 2 Cremas",
+      categoria: "Cuidado",
+      marca: "Gran Espíritu",
+      beneficio: "Nutrición & Cuidado Capilar",
+      descripcion: "Pack completo de cuidado personal con hongos medicinales: shampoo nutritivo + 2 cremas de tratamiento.",
+      precio: 34990,
+      precioNormal: 44970,
+      precioUnidad: "Pack 3 productos",
+      imagen: "./img/promos/promo-potencia-tupack.jpg",
+      stock: true,
+      promo: "-22%",
+      unidadesRestantes: null
     }
   ];
 
@@ -2134,7 +2141,7 @@
       id: 'sinergia',
       nombre: 'Sinergia Ayurveda',
       tag: 'Depura, equilibra y vitaliza tu cuerpo',
-      img: './img/promos/promo-sinergia.jpg',
+      img: './img/promos/promo-sinergia.png',
       incluye: ['30 Cáps Ashwagandha', '30 Cáps Shatavari', '30 Cáps Triphala', '30 Cáps Neem', '30 Cáps Maca'],
       precio: 47990, precioRef: 59950
     },
