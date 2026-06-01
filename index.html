@@ -626,6 +626,24 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .card-desc.expanded {
+      display: block;
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+    .card-desc-btn {
+      background: none;
+      border: none;
+      padding: 2px 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--pop);
+      cursor: pointer;
+      align-self: flex-start;
+    }
+    .card-desc-btn:hover { text-decoration: underline; }
     .card-price-wrap { margin-top: 6px; }
     .price-old { font-size: 11px; color: var(--text-subtle); text-decoration: line-through; }
     .price-row { display: flex; align-items: baseline; gap: 6px; }
@@ -1438,7 +1456,7 @@
   <!-- ═════ FOOTER ═════ -->
   <footer>
     <div class="footer-brand">Gran Espíritu</div>
-    <div class="footer-tagline">Medicina del bosque para la mente y el cuerpo</div>
+    <div class="footer-tagline">SIEMPRE FUERTES,  NEUTRALES & ANCESTRALES.¡EL FUTURO ES FUNGI¡</div>
     <div class="footer-grid">
       <div class="footer-item">
         <div class="footer-item-icon">📍</div>
@@ -2234,6 +2252,13 @@
     return list;
   }
 
+  function toggleDesc(id) {
+    const desc = document.getElementById('desc-' + id);
+    const btn  = desc.nextElementSibling;
+    const expanded = desc.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Ver menos ▴' : 'Ver más ▾';
+  }
+
   function formatCLP(n) { return '$' + Math.round(n).toLocaleString('es-CL'); }
   function getDiscountPct(p) {
     if (!p.precioNormal) return 0;
@@ -2278,7 +2303,8 @@
         <div class="card-body">
           <span class="card-benefit">${p.beneficio}</span>
           <h3 class="card-name">${p.nombre}</h3>
-          <p class="card-desc">${p.descripcion}</p>
+          <p class="card-desc" id="desc-${p.id}">${p.descripcion}</p>
+          <button class="card-desc-btn" onclick="toggleDesc(${p.id})">Ver más ▾</button>
           <div class="card-price-wrap">
             ${p.precioNormal ? `<div class="price-old">${formatCLP(p.precioNormal)}</div>` : ''}
             <div class="price-row">
