@@ -1570,14 +1570,6 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
               <div class="pay-method-desc">Paga al retirar o coordinar entrega</div>
             </div>
           </label>
-          <label class="pay-method-card">
-            <input type="radio" name="pay-method" value="webpay" />
-            <div class="pay-method-icon" style="background:#e8eeff;">💳</div>
-            <div class="pay-method-info">
-              <div class="pay-method-name">Tarjeta (Webpay Plus)</div>
-              <div class="pay-method-desc">Débito, crédito · Cuotas sin interés</div>
-            </div>
-          </label>
         </div>
         <div class="pay-spacer"></div>
       </div>
@@ -1627,81 +1619,6 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
       </div>
     </div>
 
-    <!-- STEP 2C: Webpay -->
-    <div class="pay-step" id="pay-step-webpay">
-      <div class="pay-section">
-        <div style="background:var(--pop);border-radius:var(--r-lg);padding:16px;margin-bottom:20px;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
-            <div>
-              <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:4px;">Pagando en</div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:#fff;">Gran Espíritu</div>
-            </div>
-            <div style="text-align:right;">
-              <div style="font-size:10px;color:rgba(255,255,255,0.6);font-weight:600;">Total</div>
-              <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;" id="wp-total-display">$0</div>
-            </div>
-          </div>
-          <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="color:#fff;font-weight:800;font-size:13px;">Webpay Plus</span>
-            <span style="color:rgba(255,255,255,0.7);font-size:11px;">Secured by Transbank 🔒</span>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div>
-            <label class="form-label">Número de tarjeta</label>
-            <input id="wp-card-number" type="tel" placeholder="0000 0000 0000 0000" maxlength="19"
-              class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
-              oninput="formatCardNumber(this)" />
-          </div>
-          <div>
-            <label class="form-label">Nombre en la tarjeta</label>
-            <input id="wp-card-name" type="text" placeholder="Como aparece en tu tarjeta"
-              class="form-input" style="text-transform:uppercase;" />
-          </div>
-          <div class="form-grid-2">
-            <div>
-              <label class="form-label">Vencimiento</label>
-              <input id="wp-expiry" type="tel" placeholder="MM/AA" maxlength="5"
-                class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
-                oninput="formatExpiry(this)" />
-            </div>
-            <div>
-              <label class="form-label">CVV / CVC</label>
-              <input id="wp-cvv" type="tel" placeholder="•••" maxlength="4"
-                class="form-input" style="font-family:monospace;letter-spacing:0.1em;"
-                oninput="this.value=this.value.replace(/\D/g,'')" />
-            </div>
-          </div>
-          <div>
-            <label class="form-label">Cuotas</label>
-            <select id="wp-cuotas" class="form-input">
-              <option value="1">Sin cuotas (1 pago)</option>
-              <option value="3">3 cuotas sin interés</option>
-              <option value="6">6 cuotas sin interés</option>
-              <option value="12">12 cuotas sin interés</option>
-            </select>
-          </div>
-        </div>
-        <div class="pay-spacer"></div>
-      </div>
-      <div class="pay-cta">
-        <button onclick="processWebpay()" class="btn-pagar">🔒 Pagar <span id="wp-btn-total">$0</span></button>
-        <button onclick="backToPayStep1()" class="btn-back">← Cambiar método</button>
-      </div>
-    </div>
-
-    <!-- STEP 3: Procesando -->
-    <div class="pay-step" id="pay-step-processing">
-      <div style="padding:60px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
-        <div class="spinner"></div>
-        <div>
-          <div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text);">Procesando tu pago</div>
-          <div style="font-size:13px;color:var(--text-subtle);margin-top:6px;">Conectando con Transbank...</div>
-        </div>
-        <div style="font-size:12px;color:var(--text-subtle);">🔒 No cierres esta ventana</div>
-      </div>
-    </div>
 
     <!-- STEP 4: Éxito -->
     <div class="pay-step" id="pay-step-success">
@@ -2697,10 +2614,6 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
     } else if (method.value === 'cash') {
       document.getElementById('cash-amount').textContent = formatCLP(total);
       showPayStep('pay-step-cash');
-    } else if (method.value === 'webpay') {
-      document.getElementById('wp-total-display').textContent = formatCLP(total);
-      document.getElementById('wp-btn-total').textContent     = formatCLP(total);
-      showPayStep('pay-step-webpay');
     }
   }
 
@@ -2720,18 +2633,6 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
 
   function confirmCash() { finishOrder('Efectivo al entregar'); }
 
-  function processWebpay() {
-    const num  = document.getElementById('wp-card-number').value.replace(/\s/g,'');
-    const name = document.getElementById('wp-card-name').value.trim();
-    const exp  = document.getElementById('wp-expiry').value;
-    const cvv  = document.getElementById('wp-cvv').value;
-    if (num.length < 16 || !name || exp.length < 5 || cvv.length < 3) {
-      showToast('⚠️ Completa todos los datos de la tarjeta');
-      return;
-    }
-    showPayStep('pay-step-processing');
-    setTimeout(() => finishOrder('Webpay Plus'), 2800);
-  }
 
   function sendSuccessWhatsApp() {
     let msg = `Hola Gran Espíritu 🍄, acabo de confirmar mi pedido:\n\n`;
@@ -2765,18 +2666,6 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 
-  // ─────────────────────────────────────────────
-  // FORMATEO DE INPUTS PAGO
-  // ─────────────────────────────────────────────
-  function formatCardNumber(el) {
-    let v = el.value.replace(/\D/g, '').slice(0,16);
-    el.value = v.replace(/(.{4})/g, '$1 ').trim();
-  }
-  function formatExpiry(el) {
-    let v = el.value.replace(/\D/g, '');
-    if (v.length >= 2) v = v.slice(0,2) + '/' + v.slice(2,4);
-    el.value = v;
-  }
 
   // ─────────────────────────────────────────────
   // EVENT LISTENERS
