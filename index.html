@@ -3042,6 +3042,7 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
 
   async function renderAdminPanel() {
     const overlay = document.getElementById('admin-overlay');
+    if (allProducts.length === 0) allProducts = [...PRODUCTS_DATA];
     let rows = '';
     let currentCat = '';
     const products = [...allProducts];
