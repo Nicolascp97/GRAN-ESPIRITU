@@ -1688,7 +1688,9 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
     <div class="footer-credit">
       ​© 2026 granespírTU. Todos los derechos reservados · <a class="footer-credit-link" href="https://www.instagram.com/nico.agenteia" target="_blank" rel="noopener">nico.agenteia</a>
       <span class="footer-credit-cta">¿Quieres tu propio catálogo digital? → Contáctame</span>
+      <!-- UPGRADE Panel Admin (desactivado). Para reactivar, descomenta esta línea y pon ADMIN_ENABLED = true en el script. Ver ADMIN-PANEL-UPGRADE.md
       <a href="#admin" class="footer-credit-link" style="display:block;margin-top:12px;font-size:10px;color:rgba(242,237,230,0.25);">🔐 Administrar catálogo</a>
+      -->
     </div>
   </footer>
 
@@ -2407,6 +2409,14 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   const WA_NUMBER    = '56947857304'; // Número real Gran Espíritu
 
   // ─────────────────────────────────────────────
+  // PANEL ADMIN — UPGRADE DESACTIVADO
+  // ─────────────────────────────────────────────
+  // Para reactivar el panel de administración (precios/stock/productos
+  // editables desde Supabase) basta con cambiar esta bandera a true.
+  // Ver instrucciones completas en ADMIN-PANEL-UPGRADE.md
+  const ADMIN_ENABLED = false;
+
+  // ─────────────────────────────────────────────
   // SUPABASE CONFIG
   // ─────────────────────────────────────────────
   const SB_URL = 'https://qovlxtenzpwwtwhrbqip.supabase.co';
@@ -2434,7 +2444,9 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   async function fetchData() {
     try {
       allProducts = PRODUCTS_DATA;
-      try {
+      // Carga de precios/datos desde Supabase: solo si el panel admin está activo.
+      // Mientras ADMIN_ENABLED = false, el catálogo usa los datos locales (PRODUCTS_DATA).
+      if (ADMIN_ENABLED) try {
         const rows = await sbFetch('ge_productos?select=*');
         rows.forEach(row => {
           const p = allProducts.find(x => x.id === row.product_id);
@@ -3012,6 +3024,7 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   const ADMIN_PASS = 'granespiritu2026';
 
   function checkAdmin() {
+    if (!ADMIN_ENABLED) return; // Panel admin desactivado (upgrade no contratado)
     if (location.hash === '#admin') openAdminLogin();
   }
   window.addEventListener('hashchange', checkAdmin);
