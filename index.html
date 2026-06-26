@@ -313,11 +313,30 @@
     .hero-prev:hover, .hero-next:hover { background: rgba(255,255,255,0.3); }
 
     /* Slides de promoción — imagen completa cuadrada */
-    .promo-slide { min-width: 100%; display: block; background: var(--surface-alt); }
+    .promo-slide { min-width: 100%; display: block; background: var(--surface-alt); position: relative; }
     .promo-slide img {
       width: 100%; display: block;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+    }
+    .promo-slide-btn {
+      position: absolute;
+      bottom: 14px; left: 50%; transform: translateX(-50%);
+      background: rgba(37,211,102,0.92);
+      color: #fff;
+      border: none; border-radius: var(--r-lg);
+      padding: 10px 22px;
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 0.15s, background 0.2s;
+      white-space: nowrap;
+    }
+    .promo-slide-btn:hover { background: #20c05c; transform: translateX(-50%) scale(1.04); }
+    .promo-slide-btn:active { transform: translateX(-50%) scale(0.97); }
+    .promo-slide-btn svg { width: 16px; height: 16px; flex-shrink: 0;
     }
 
     /* ═══════════════════════════════════════════
@@ -860,6 +879,96 @@
       color: #c8e0c0;
       text-decoration: underline;
     }
+
+    /* ═══════════════════════════════════════════
+       ADMIN PANEL
+    ═══════════════════════════════════════════ */
+    .admin-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.85);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .admin-overlay.hidden { display: none; }
+    .admin-panel {
+      background: #1e1a15; color: #f0ede6;
+      border-radius: 16px;
+      width: 100%; max-width: 460px; max-height: 90vh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .admin-header {
+      padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .admin-header h2 { font-family: var(--font-display); font-size: 18px; margin: 0; }
+    .admin-close {
+      background: none; border: none; color: #f0ede6; font-size: 24px; cursor: pointer;
+    }
+    .admin-body {
+      padding: 16px; overflow-y: auto; flex: 1;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .admin-section-title {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: rgba(255,255,255,0.4);
+      margin-top: 12px;
+    }
+    .admin-row {
+      display: grid; grid-template-columns: 1fr 90px 90px 44px; gap: 8px;
+      align-items: center;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .admin-row-name {
+      font-size: 12px; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .admin-input {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 8px; color: #fff;
+      font-size: 13px; font-family: monospace; text-align: right;
+      width: 100%;
+    }
+    .admin-input:focus { outline: none; border-color: var(--pop); }
+    .admin-toggle {
+      width: 36px; height: 20px; border-radius: 10px; border: none;
+      background: #555; cursor: pointer; position: relative; transition: background 0.2s;
+    }
+    .admin-toggle.on { background: #25D366; }
+    .admin-toggle::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 16px; height: 16px; border-radius: 50%; background: #fff;
+      transition: transform 0.2s;
+    }
+    .admin-toggle.on::after { transform: translateX(16px); }
+    .admin-footer {
+      padding: 16px; border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; gap: 10px;
+    }
+    .admin-save {
+      flex: 1; background: var(--pop); color: #fff; border: none;
+      border-radius: 10px; padding: 14px; font-weight: 700; font-size: 14px;
+      cursor: pointer; font-family: var(--font-body);
+    }
+    .admin-save:hover { background: #4a6d4d; }
+    .admin-save:disabled { opacity: 0.5; cursor: not-allowed; }
+    .admin-login {
+      display: flex; flex-direction: column; gap: 16px;
+      padding: 40px 24px; text-align: center;
+    }
+    .admin-login h2 { font-family: var(--font-display); font-size: 20px; margin: 0; }
+    .admin-login input {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; padding: 14px; color: #fff; font-size: 15px;
+      text-align: center; font-family: var(--font-body);
+    }
+    .admin-login input:focus { outline: none; border-color: var(--pop); }
+    .admin-login button {
+      background: var(--pop); color: #fff; border: none; border-radius: 10px;
+      padding: 14px; font-weight: 700; font-size: 14px; cursor: pointer;
+      font-family: var(--font-body);
+    }
+    .admin-login-error { color: #ff6b6b; font-size: 12px; }
 
     /* ═══════════════════════════════════════════
        FAB WhatsApp / Carrito
@@ -2216,14 +2325,46 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   const WA_NUMBER    = '56947857304'; // Número real Gran Espíritu
 
   // ─────────────────────────────────────────────
+  // SUPABASE CONFIG
+  // ─────────────────────────────────────────────
+  const SB_URL = 'https://qovlxtenzpwwtwhrbqip.supabase.co';
+  const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvdmx4dGVuenB3d3R3aHJicWlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNTEzMDQsImV4cCI6MjA5NzcyNzMwNH0.mHbxbTsHeVTzG3kN6BJ8Ws94YBw3SDQBts_LodzVmVg';
+
+  async function sbFetch(path, opts = {}) {
+    const res = await fetch(`${SB_URL}/rest/v1/${path}`, {
+      ...opts,
+      headers: {
+        'apikey': SB_KEY,
+        'Authorization': `Bearer ${SB_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': opts.method === 'PATCH' ? 'return=minimal' : 'return=representation',
+        ...opts.headers
+      }
+    });
+    if (!res.ok) throw new Error(`Supabase ${res.status}`);
+    if (opts.method === 'PATCH') return true;
+    return res.json();
+  }
+
+  // ─────────────────────────────────────────────
   // CARGA DE DATOS
   // ─────────────────────────────────────────────
   async function fetchData() {
     try {
-      // FASE 1 (MVP): datos embebidos arriba
-      // FASE 2: const res = await fetch('./productos.json')
-      await new Promise(r => setTimeout(r, 600)); // simular carga
       allProducts = PRODUCTS_DATA;
+      try {
+        const precios = await sbFetch('ge_precios?select=*');
+        precios.forEach(row => {
+          const p = allProducts.find(x => x.id === row.product_id);
+          if (p) {
+            p.precio = row.precio;
+            p.precioNormal = row.precio_normal;
+            p.stock = row.stock;
+          }
+        });
+      } catch (e) {
+        console.warn('Supabase offline, usando precios locales:', e);
+      }
       document.getElementById('skeleton-grid').style.display = 'none';
       document.getElementById('products-grid').style.display = 'grid';
       renderProducts();
@@ -2524,16 +2665,21 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   }
 
   function renderPromos() {
-    // 1) Carrusel hero — imágenes completas (la 1ª carga eager para mejorar LCP)
-    document.getElementById('hero-track').innerHTML = PROMOS_DATA.map((p, i) => `
+    const CAROUSEL_PROMOS = PROMOS_DATA.filter(p => !p.id.endsWith('-90'));
+
+    // 1) Carrusel hero — solo promos combinadas, con botón overlay
+    document.getElementById('hero-track').innerHTML = CAROUSEL_PROMOS.map((p, i) => `
       <div class="promo-slide">
         <img src="${p.img}" alt="${p.nombre} — ${p.tag}"
              loading="${i === 0 ? 'eager' : 'lazy'}" ${i === 0 ? 'fetchpriority="high"' : ''}
              onerror="this.src='https://placehold.co/600x600/ece6dc/9e8e7c?text=${encodeURIComponent(p.nombre)}'" />
+        <button class="promo-slide-btn" onclick="pedirPromo('${p.id}')">
+          ${WA_ICON} Pedir este pack
+        </button>
       </div>`).join('');
 
     // 2) Dots dinámicos
-    document.getElementById('hero-dots').innerHTML = PROMOS_DATA.map((_, i) =>
+    document.getElementById('hero-dots').innerHTML = CAROUSEL_PROMOS.map((_, i) =>
       `<span class="hdot${i === 0 ? ' active' : ''}"></span>`).join('');
 
     // 3) Sección de cards
@@ -2578,7 +2724,7 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   // HERO CARRUSEL
   // ─────────────────────────────────────────────
   let heroIndex = 0;
-  let TOTAL_SLIDES = PROMOS_DATA.length;
+  let TOTAL_SLIDES = PROMOS_DATA.filter(p => !p.id.endsWith('-90')).length;
   let heroAuto;
 
   function heroGoTo(i) {
@@ -2735,12 +2881,128 @@ Descubre el poder bajo tus pies. Medicina natural y artesanal directo a tu salud
   });
 
   // ─────────────────────────────────────────────
+  // PANEL ADMIN
+  // ─────────────────────────────────────────────
+  const ADMIN_PASS = 'granespiritu2026';
+
+  function checkAdmin() {
+    if (location.hash === '#admin') openAdminLogin();
+  }
+  window.addEventListener('hashchange', checkAdmin);
+
+  function openAdminLogin() {
+    let overlay = document.getElementById('admin-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'admin-overlay';
+      overlay.className = 'admin-overlay';
+      document.body.appendChild(overlay);
+    }
+    overlay.classList.remove('hidden');
+    overlay.innerHTML = `
+      <div class="admin-panel">
+        <div class="admin-login">
+          <h2>🔐 Panel Admin</h2>
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0;">Ingresa la contraseña para editar precios</p>
+          <input type="password" id="admin-pass-input" placeholder="Contraseña" onkeydown="if(event.key==='Enter')adminLogin()" />
+          <button onclick="adminLogin()">Entrar</button>
+          <div class="admin-login-error" id="admin-login-error"></div>
+          <button onclick="closeAdmin()" style="background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);border-radius:10px;padding:10px;cursor:pointer;font-size:12px;">Cancelar</button>
+        </div>
+      </div>`;
+    setTimeout(() => document.getElementById('admin-pass-input')?.focus(), 100);
+  }
+
+  function adminLogin() {
+    const pass = document.getElementById('admin-pass-input').value;
+    if (pass === ADMIN_PASS) {
+      renderAdminPanel();
+    } else {
+      document.getElementById('admin-login-error').textContent = 'Contraseña incorrecta';
+    }
+  }
+
+  function closeAdmin() {
+    const overlay = document.getElementById('admin-overlay');
+    if (overlay) overlay.classList.add('hidden');
+    history.replaceState(null, '', location.pathname);
+  }
+
+  async function renderAdminPanel() {
+    const overlay = document.getElementById('admin-overlay');
+    let rows = '';
+    let currentCat = '';
+    PRODUCTS_DATA.forEach(p => {
+      if (p.categoria !== currentCat) {
+        currentCat = p.categoria;
+        rows += `<div class="admin-section-title">${currentCat}</div>`;
+      }
+      rows += `
+        <div class="admin-row" data-pid="${p.id}">
+          <div class="admin-row-name">${p.nombre}</div>
+          <input class="admin-input" type="number" data-field="precio" value="${p.precio}" placeholder="Precio" />
+          <input class="admin-input" type="number" data-field="precio_normal" value="${p.precioNormal || ''}" placeholder="Ref." />
+          <button class="admin-toggle ${p.stock ? 'on' : ''}" data-field="stock" onclick="this.classList.toggle('on')" title="${p.stock ? 'En stock' : 'Agotado'}"></button>
+        </div>`;
+    });
+
+    overlay.innerHTML = `
+      <div class="admin-panel">
+        <div class="admin-header">
+          <h2>📋 Editar Precios</h2>
+          <button class="admin-close" onclick="closeAdmin()">✕</button>
+        </div>
+        <div class="admin-body">${rows}</div>
+        <div class="admin-footer">
+          <button class="admin-save" id="admin-save-btn" onclick="saveAdmin()">💾 Guardar cambios</button>
+        </div>
+      </div>`;
+  }
+
+  async function saveAdmin() {
+    const btn = document.getElementById('admin-save-btn');
+    btn.disabled = true;
+    btn.textContent = 'Guardando...';
+
+    const rows = document.querySelectorAll('.admin-row');
+    let ok = 0;
+
+    for (const row of rows) {
+      const pid = parseInt(row.dataset.pid);
+      const precio = parseInt(row.querySelector('[data-field="precio"]').value) || 0;
+      const precioNormalVal = row.querySelector('[data-field="precio_normal"]').value;
+      const precioNormal = precioNormalVal ? parseInt(precioNormalVal) : null;
+      const stock = row.querySelector('[data-field="stock"]').classList.contains('on');
+
+      try {
+        await sbFetch(`ge_precios?product_id=eq.${pid}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ precio, precio_normal: precioNormal, stock, updated_at: new Date().toISOString() })
+        });
+        ok++;
+      } catch (e) {
+        console.error(`Error actualizando producto ${pid}:`, e);
+      }
+    }
+
+    btn.textContent = `✅ ${ok} productos actualizados`;
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = '💾 Guardar cambios';
+    }, 2000);
+
+    await fetchData();
+    showToast(`✅ ${ok} precios actualizados`);
+  }
+
+  // ─────────────────────────────────────────────
   // INIT
   // ─────────────────────────────────────────────
   renderPromos();
   fetchData();
   startHeroAuto();
   updateCartUI();
+  checkAdmin();
 </script>
 
 </body>
